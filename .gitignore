@@ -1,0 +1,34 @@
+# Node.js Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables
+.env
+
+# Build Output
+dist/
+.next/
+build/
+
+# Front-End Files
+client/node_modules/
+client/.next/
+client/.env
+
+# Back-End Files
+server/node_modules/
+server/.env
+
+# IDE and Editor Config
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-Specific Files
+.DS_Store
+Thumbs.db
