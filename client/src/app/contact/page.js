@@ -15,7 +15,7 @@ const navigation = [
   { name: 'About', href: '#' },
   { name: 'Services', href: '#' },
   { name: 'Gallery', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Contact() {
@@ -49,22 +49,22 @@ export default function Contact() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-sm font-poppins font-semibold text-winterBlack relative after:content-[''] after:absolute after:bottom-0.5 after:left-0 after:w-0 after:h-[2px] after:bg-winterBlack after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="#"
+            <Link
+              href="/contact"
               className="text-sm font-semibold bg-lotionWhite hover:bg-black hover:text-lotionWhite text-winterBlack font-bold py-2 px-4 rounded"
             >
               Free Quote <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </nav>
 
@@ -103,12 +103,12 @@ export default function Contact() {
                   ))}
                 </div>
                 <div className="py-6">
-                  <a
-                    href="#"
+                  <Link
+                    href="/contact"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-lotionWhite hover:bg-lotionWhite hover:text-winterBlack"
                   >
                     Free Quote
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
