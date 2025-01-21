@@ -10,7 +10,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        winterBlack: "#20211A",
+        lotionWhite: "#FDFDFD",
+        brightGrey: "E9E9E8"
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+      }
     },
   },
   plugins: [],
