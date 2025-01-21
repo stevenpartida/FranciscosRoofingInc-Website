@@ -125,12 +125,15 @@ export default function Contact() {
                     <p className="flex items-center gap-2">
                         <span className="font-medium"><LuPhone size={20}/></span>
                         +1 (323) 253-5146
-                     </p>
-                     <p className="flex items-center gap-2">
+                    </p>
+                    <p className="flex items-center gap-2">
                         <span className="font-medium"><LuMail size={20}/></span>
                         franciscosroofinginc.22@gmail.com
-                     </p>
-
+                    </p>
+                    <p className="flex items-center gap-2">
+                        <span className="font-medium">License No.</span>
+                        #1086198
+                    </p>
                 </div>
                 <div className='mt-8 text-winterBlack'>
                     <h2 className='flex items-center gap-2 font-bold'>

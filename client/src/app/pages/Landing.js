@@ -12,7 +12,7 @@ const navigation = [
   { name: 'About', href: '#' },
   { name: 'Services', href: '#' },
   { name: 'Gallery', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Contact', href: '/Contact' },
 ];
 
 export default function Landing() {
@@ -29,6 +29,7 @@ export default function Landing() {
       >
         <source src="/videos/HeroVideo.mp4" type="video/mp4" />
       </video>
+      <div className="absolute inset-0 bg-black/50"></div>
 
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-4 sm:p-6 lg:px-8" aria-label="Global">
@@ -54,13 +55,13 @@ export default function Landing() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-sm font-poppins font-semibold text-lotionWhite relative after:content-[''] after:absolute after:bottom-0.5 after:left-0 after:w-0 after:h-[2px] after:bg-lotionWhite after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -124,7 +125,7 @@ export default function Landing() {
       <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl sm:max-w-2xl py-16 sm:py-32 lg:py-48">
           <div className=" mb-4 sm:mb-8 flex justify-center">
-            <div className="relative rounded-full px-2 py-0.5 sm:px-3 sm:py-1 font-medium sm:font-semibold drop-shadow-md sm:drop-shadow-2xl text-xs sm:text-sm text-lotionWhite ring-1 ring-lotionWhite hover:ring-winterBlack backdrop-blur">
+            <div className="relative rounded-full px-2 py-0.5 sm:px-3 sm:py-1 font-medium sm:font-semibold drop-shadow-md sm:drop-shadow-2xl text-xs sm:text-sm text-lotionWhite ring-1 ring-lotionWhite hover:ring-winterBlack backdrop-blur-3xl">
               See our recent work. <a href="#" className="font-medium sm:font-semibold text-winterBlack"><span className="absolute inset-0" aria-hidden="true"></span>Gallery <span aria-hidden="true">&rarr;</span></a>
             </div>
           </div>
@@ -151,11 +152,16 @@ export default function Landing() {
       </div>
 
       <footer className="absolute inset-x-0 bottom-0 z-50 py-4">
-        <div className="flex flex-col-reverse items-center sm:flex-row sm:justify-between px-4">
-          <span className="text-sm text-lotionWhite mt-4 sm:mt-0 text-center sm:text-left">
-            © 2022 Francisco's Roofing, Inc. All rights reserved.
-          </span>
-          <div className="flex space-x-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">
+          {/* Left Section: Copyright and License */}
+          <div className="text-xs sm:text-sm text-lotionWhite text-center sm:text-left">
+            <span>© 2022 Francisco's Roofing, Inc. All rights reserved.</span>
+              <br className="sm:hidden" />
+            <span span className="sm:ml-2">License No. #1086198</span>
+          </div>
+
+          {/* Right Section: Social Media Links */}
+          <div className="flex space-x-4 mt-4 sm:mt-0">
             <a href="#" className="text-lotionWhite hover:text-winterBlack">
               <FaFacebook size={25} />
             </a>
@@ -168,7 +174,6 @@ export default function Landing() {
           </div>
         </div>
       </footer>
-
     </div>
   );
 }

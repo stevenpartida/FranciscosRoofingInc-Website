@@ -4,6 +4,6 @@ import Contact from "./pages/Contact";
 
 export default function Home() {
   return (
-    <Contact />
+    <Landing />
   );
 }
