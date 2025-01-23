@@ -5,8 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import LogoBlack from '../assets/images/LogoBlack.png'
+import LogoWhite from '../assets/images/LogoWhite.png';
+import { LuPhone, LuMail } from "react-icons/lu";
+import { LuClock } from "react-icons/lu";
 import { FaFacebook, FaInstagram, FaGoogle } from 'react-icons/fa';
-import LogoWhite from './assets/images/LogoWhite.png';
 
 const navigation = [
   { name: 'About', href: '/about' },
@@ -15,21 +18,12 @@ const navigation = [
   { name: 'Contact', href: '/contact' },
 ];
 
-export default function Home() {
+export default function About() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative h-screen overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover -z-10"
-      >
-        <source src="/videos/HeroVideo.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-black/50"></div>
+    <div className="relative h-screen sm:overflow-hidden bg-lotionWhite">
+
 
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-4 sm:p-6 lg:px-8" aria-label="Global">
@@ -38,7 +32,7 @@ export default function Home() {
               <span className="sr-only">Francisco's Roofing Inc</span>
               <Image
                 alt="Logo White 160x160"
-                src={LogoWhite}
+                src={LogoBlack}
                 className="h-10 w-auto sm:h-12"
               />
             </Link>
@@ -58,7 +52,7 @@ export default function Home() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-poppins font-semibold text-lotionWhite relative after:content-[''] after:absolute after:bottom-0.5 after:left-0 after:w-0 after:h-[2px] after:bg-lotionWhite after:transition-all after:duration-300 hover:after:w-full"
+                className="text-sm font-poppins font-semibold text-winterBlack relative after:content-[''] after:absolute after:bottom-0.5 after:left-0 after:w-0 after:h-[2px] after:bg-winterBlack after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
               </Link>
@@ -99,13 +93,13 @@ export default function Home() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <Link
+                    <a
                       key={item.name}
                       href={item.href}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-lotionWhite hover:bg-lotionWhite hover:text-winterBlack"
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   ))}
                 </div>
                 <div className="py-6">
@@ -121,59 +115,14 @@ export default function Home() {
           </DialogPanel>
         </Dialog>
       </header>
-
-      <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-xl sm:max-w-2xl py-16 sm:py-32 lg:py-48">
-          <div className=" mb-4 sm:mb-8 flex justify-center">
-            <div className="relative rounded-full px-2 py-0.5 sm:px-3 sm:py-1 font-medium sm:font-semibold drop-shadow-md sm:drop-shadow-2xl text-xs sm:text-sm text-lotionWhite ring-1 ring-lotionWhite hover:ring-winterBlack backdrop-blur-md">
-              See our recent work. <a href="#" className="font-medium sm:font-semibold text-lotionWhite  "><span className="absolute inset-0 " aria-hidden="true"></span><span className='underline underline-offset-2'>Gallery</span> <span aria-hidden="true">&rarr;</span></a>
-            </div>
-          </div>
-          <div className="text-center">
-            <h1 className="text-4xl font-bold sm:text-6xl text-lotionWhite drop-shadow-2xl">
-              Francisco's Roofing, Inc
-            </h1>
-            <p className="mt-6 text-base sm:text-lg text-lotionWhite drop-shadow-2xl">
-              At Francisco's Roofing, Inc, we provide top-quality roofing services with years of expertise. As a Licensed and Insured company, we deliver reliable results with exceptional craftsmanship. Whether it's repairs, replacements, or installations, we’re here to protect your property.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#"
-                className="w-full sm:w-auto rounded-md bg-winterBlack px-6 py-3 text-sm font-semibold text-lotionWhite shadow-sm hover:bg-black"
-              >
-                Get started
-              </a>
-              <a href="#" className="text-sm font-semibold text-lotionWhite hover:text-winterBlack">
-                Learn more <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <footer className="absolute inset-x-0 bottom-0 z-50 py-4">
-        <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">
-          {/* Left Section: Copyright and License */}
-          <div className="text-xs sm:text-sm text-lotionWhite text-center sm:text-left">
-            <span>© 2022 Francisco's Roofing, Inc. All rights reserved.</span>
-              <br className="sm:hidden" />
-            <span className="sm:ml-2">License No. #1086198</span>
-          </div>
-
-          {/* Right Section: Social Media Links */}
-          <div className="flex space-x-4 mt-4 sm:mt-0">
-            <a href="#" className="text-lotionWhite hover:text-winterBlack">
-              <FaFacebook size={25} />
-            </a>
-            <a href="#" className="text-lotionWhite hover:text-winterBlack">
-              <FaInstagram size={25} />
-            </a>
-            <a href="#" className="text-lotionWhite hover:text-winterBlack">
-              <FaGoogle size={25} />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <div className='relative flex items-center h-screen bg-lotionWhite'>
+       
+        <footer className="absolute bottom-0 left-0 w-full py-4 flex items-center justify-center bg-lotionWhite">
+            <span className="text-sm text-winterBlack text-center">
+                © 2022 Francisco's Roofing, Inc. All rights reserved.
+            </span>
+        </footer>
+      </div>     
     </div>
   );
 }

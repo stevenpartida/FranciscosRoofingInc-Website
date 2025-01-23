@@ -10,9 +10,10 @@ import LogoWhite from '../assets/images/LogoWhite.png';
 import { LuPhone, LuMail } from "react-icons/lu";
 import { LuClock } from "react-icons/lu";
 import { FaFacebook, FaInstagram, FaGoogle } from 'react-icons/fa';
+import axios from 'axios';
 
 const navigation = [
-  { name: 'About', href: '#' },
+  { name: 'About', href: '/about' },
   { name: 'Services', href: '#' },
   { name: 'Gallery', href: '#' },
   { name: 'Contact', href: '/contact' },
@@ -20,6 +21,57 @@ const navigation = [
 
 export default function Contact() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState(null);
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setFormData({...formData, [name]: value});
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    //Validation
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
+        setStatus('error');
+        console.error('All fields are required');
+        return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+        setStatus('error');
+        console.error('Invalid email address.');
+        return;
+    }
+
+    setStatus('loading');
+
+    try {
+        const response = await axios.post('http://localhost:5000/api/contact', formData);
+        setStatus('success');
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            message: '',
+        }); //Reset form
+
+        setTimeout(() => setStatus(null), 5000);
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        setStatus('error');
+    }
+  };
 
   return (
     <div className="relative h-screen sm:overflow-hidden bg-lotionWhite">
@@ -195,7 +247,7 @@ export default function Contact() {
             </div>
             {/* right side */}
             <div className='px-8 py-20'>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div>
                             <label className="block text-sm font-semibold font-poppins text-winterBlack" htmlFor="firstName">
@@ -205,9 +257,9 @@ export default function Contact() {
                                 id="firstName"
                                 name="firstName"
                                 type="text"
-                                value=''
-                                onChange=''
-                                className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                                value={formData.firstName}
+                                onChange={handleChange}
+                                className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                             /> 
                         </div>
                         <div>
@@ -218,9 +270,9 @@ export default function Contact() {
                                 id="lastName"
                                 name="lastName"
                                 type="text"
-                                value=''
-                                onChange=''
-                                className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                                value={formData.lastName}
+                                onChange={handleChange}
+                                className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                             />
                         </div>
                     </div>
@@ -232,9 +284,9 @@ export default function Contact() {
                             id="email"
                             name="email"
                             type="email"
-                            value=''
-                            onChange=''
-                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                         />
                     </div>
                     <div className="mt-4">
@@ -245,9 +297,9 @@ export default function Contact() {
                             id="phone"
                             name="phone"
                             type="text"
-                            value=''
-                            onChange=''
-                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                         />
                     </div>
                     <div className="mt-4">
@@ -258,18 +310,21 @@ export default function Contact() {
                             id="message"
                             name="message"
                             rows="4"
-                            value=''
-                            onChange=''
-                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                            value={formData.message}
+                            onChange={handleChange}
+                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                         ></textarea>
                     </div>
                     <div className="mt-8 flex justify-end">
                         <button
                             type="submit"
                             className="bg-winterBlack text-lotionWhite py-2 px-4 rounded-lg hover:bg-black transition"
+                            disabled={status === 'loading'}
                         >
-                            Send message
+                            {status === 'loading' ? 'Sending...' : 'Send Message'}
                         </button>
+                        {status === 'success' && <p className="text-green-500 mt-4">Message sent successfully!</p>}
+                        {status === 'error' && <p className="text-red-500 mt-4">An error occurred. Please try again.</p>}
                     </div>
                 </form>
             </div>
