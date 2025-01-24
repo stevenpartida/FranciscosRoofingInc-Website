@@ -21,6 +21,8 @@ const navigation = [
 
 export default function Contact() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -42,21 +44,22 @@ export default function Contact() {
 
     //Validation
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
+        setErrorMessage('All fields are required.');
         setStatus('error');
-        console.error('All fields are required');
         return;
     }
 
     if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+        setErrorMessage('Invalid email address.');
         setStatus('error');
-        console.error('Invalid email address.');
         return;
     }
 
     setStatus('loading');
+    setErrorMessage('');
 
     try {
-        const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await axios.post('http://localhost:5001/api/contact', formData);
         setStatus('success');
         setFormData({
             firstName: '',
@@ -66,9 +69,10 @@ export default function Contact() {
             message: '',
         }); //Reset form
 
-        setTimeout(() => setStatus(null), 5000);
+        setTimeout(() => setStatus(null), 100000);
     } catch (error) {
         console.error('Error submitting form:', error);
+        setErrorMessage('An unexpected error occurred. Please try again later.');
         setStatus('error');
     }
   };
@@ -315,7 +319,7 @@ export default function Contact() {
                             className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                         ></textarea>
                     </div>
-                    <div className="mt-8 flex justify-end">
+                    <div className="mt-8 flex justify-end flex-col text-center">
                         <button
                             type="submit"
                             className="bg-winterBlack text-lotionWhite py-2 px-4 rounded-lg hover:bg-black transition"
@@ -324,7 +328,7 @@ export default function Contact() {
                             {status === 'loading' ? 'Sending...' : 'Send Message'}
                         </button>
                         {status === 'success' && <p className="text-green-500 mt-4">Message sent successfully!</p>}
-                        {status === 'error' && <p className="text-red-500 mt-4">An error occurred. Please try again.</p>}
+                        {status === 'error' && <p className="text-red-500 mt-4">{errorMessage}</p>}
                     </div>
                 </form>
             </div>
