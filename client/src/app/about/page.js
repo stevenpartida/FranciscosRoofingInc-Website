@@ -120,8 +120,8 @@ export default function About() {
           </DialogPanel>
         </Dialog>
       </header>
-      <div className='relative px-4 pt-8 mb-16 sm:px-6 lg:px-8'>
-        <div className="mx-auto max-w-xl sm:max-w-2xl lg:max-w-5xl pt-8 sm:pt-16 lg:pt-24 flex flex-col sm:flex-row  ">
+      <div className='relative px-4 pt-2 mb-16 sm:px-6 lg:px-8'>
+        <div className="mx-auto max-w-xl sm:max-w-2xl lg:max-w-5xl py-0 sm:py-16 lg:py-24 flex flex-col sm:flex-row items-center ">
           {/* Image Container */}
           <div className="flex-1 p-4 rounded-lg shadow-sm items-center">
             <Image
@@ -137,14 +137,29 @@ export default function About() {
               About Francisco's Roofing, Inc
             </h3>
             <h1 className="text-lotionWhite capitalize font-bold text-2xl sm:text-4xl leading-snug text-balance">
-              Trusted by Homeowners & Businesses for Quality Roofing
+              Who Are We
             </h1>
             <p className="text-brightGrey mt-2">
+  Francisco’s Roofing, Inc. is a <span className="font-semibold">family-owned and operated business</span>, proudly serving the <span className="font-semibold">Los Angeles area</span> with expert <span className="font-semibold">residential and commercial roofing services</span>.
+  <br /><br />
+  Founded in <span className="font-semibold">2022</span> by <span className="font-semibold">Francisco Senior and Francisco Jr.</span>, our company brings <span className="font-semibold">30+ years of experience</span>, ensuring high-quality craftsmanship and reliable roofing solutions.
+  <br /><br />
+  We are <span className="font-semibold">fully licensed and insured</span>, committed to delivering durable, long-lasting roofs that protect homes and businesses.
+  <br /><br />
+  Whether it’s a small repair or a complete installation, we take pride in our work, using premium materials and expert techniques to exceed customer expectations.
+  <br /><br />
+  At Francisco’s Roofing, Inc., <span className="font-semibold">your trust is our foundation.</span> Let us help you with your next roofing project!
+</p>
+
+          </div>
+        </div>
+        <section className="text-white py-12 px-2 sm:px-6 mt-2">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-balance">Trusted by Homeowners & Businesses for Quality Roofing</h2>
+            <p className="text-gray-400 mt-2">
             From residential homes to large-scale commercial, we provide durable, high-quality roofing solutions tailored to your needs. With expert craftsmanship and premium materials, we ensure lasting protection and peace of mind.
             </p>
           </div>
-        </div>
-        <section className="text-white py-12 px-2 sm:px-6">
           <div className="mt-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-1">
             <div className="bg-shadowBlack px-8 py-6 text-center w-full rounded-l-xl">
               <h3 className="text-lg font-semibold mb-2 text-lotionWhite">Residential Roofing</h3>
