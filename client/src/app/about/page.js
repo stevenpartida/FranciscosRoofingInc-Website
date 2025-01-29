@@ -20,10 +20,16 @@ const navigation = [
   { name: 'Contact', href: '/contact' },
 ];
 
-export default function Contact() {
+const stats = [
+  { id: 1, name: 'Total Projects', value: '800+' },
+  { id: 2, name: 'Total Revenue', value: '$20M' },
+  { id: 3, name: 'Total Clients', value: '500+' },
+]
+
+export default function About() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <div className="relative sm:overflow-hidden bg-lotionWhite">
+    <div className="relative sm:overflow-hidden bg-black">
       <header className=" inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-4 sm:p-6 lg:px-8" aria-label="Global">
           <div className="flex flex-1">
@@ -31,7 +37,7 @@ export default function Contact() {
               <span className="sr-only">Francisco's Roofing Inc</span>
               <Image
                 alt="Logo White 160x160"
-                src={LogoBlack}
+                src={LogoWhite}
                 className="h-12 w-auto sm:h-16"
               />
             </Link>
@@ -51,7 +57,7 @@ export default function Contact() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-base font-medium  text-winterBlack relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-winterBlack after:transition-all after:duration-300 hover:after:w-full"
+                className="text-base font-medium  text-lotionWhite relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-lotionWhite after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
               </Link>
@@ -60,7 +66,7 @@ export default function Contact() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               href="/contact"
-              className="text-sm font-medium bg-winterBlack hover:bg-black hover:text-lotionWhite text-lotionWhite font-bold py-2 px-4 rounded"
+              className="text-sm font-medium bg-lotionWhite hover:bg-winterBlack hover:text-lotionWhite text-winterBlack font-bold py-2 px-4 rounded"
             >
               Free Estimate <span aria-hidden="true">&rarr;</span>
             </Link>
@@ -114,7 +120,7 @@ export default function Contact() {
           </DialogPanel>
         </Dialog>
       </header>
-      <div className='relative px-4 pt-8 sm:px-6 lg:px-8'>
+      <div className='relative px-4 pt-8 mb-16 sm:px-6 lg:px-8'>
         <div className="mx-auto max-w-xl sm:max-w-2xl lg:max-w-5xl pt-8 sm:pt-16 lg:pt-24 flex flex-col sm:flex-row  ">
           {/* Image Container */}
           <div className="flex-1 p-4 rounded-lg shadow-sm items-center">
@@ -127,53 +133,70 @@ export default function Contact() {
 
           {/* Text Content */}
           <div className="flex-1 p-6 min-w-0 ">
-            <h3 className="text-gray-800 uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
+            <h3 className="text-brightGrey uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
               About Francisco's Roofing, Inc
             </h3>
-            <h1 className="text-gray-900 capitalize font-bold text-2xl sm:text-4xl leading-snug text-balance">
+            <h1 className="text-lotionWhite capitalize font-bold text-2xl sm:text-4xl leading-snug text-balance">
               Trusted by Homeowners & Businesses for Quality Roofing
             </h1>
-            <p className="text-gray-400 mt-2">
-            From residential homes to large-scale commercial and industrial projects, we provide durable, high-quality roofing solutions tailored to your needs. With expert craftsmanship and premium materials, we ensure lasting protection and peace of mind.
+            <p className="text-brightGrey mt-2">
+            From residential homes to large-scale commercial, we provide durable, high-quality roofing solutions tailored to your needs. With expert craftsmanship and premium materials, we ensure lasting protection and peace of mind.
             </p>
           </div>
         </div>
-        <section className="bg-lotionWhite text-white py-12 px-2 sm:px-6">
-          {/*}
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-balance">Trusted by Homeowners & Businesses for Quality Roofing</h2>
-            <p className="text-gray-400 mt-2">
-            From residential homes to large-scale commercial and industrial projects, we provide durable, high-quality roofing solutions tailored to your needs. With expert craftsmanship and premium materials, we ensure lasting protection and peace of mind.
-            </p>
-          </div>
-          */}
-          <div className="mt-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
-            <div className="bg-gray-200 px-8 py-4 text-center max-w-md mx-auto rounded-lg sm:rounded-l-xl sm:rounded-r-none">
-              <h3 className="text-lg font-semibold mb-2 text-winterBlack">Residential Roofing</h3>
-              <p className="text-sm text-winterBlack">
+        <section className="text-white py-12 px-2 sm:px-6">
+          <div className="mt-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-1">
+            <div className="bg-shadowBlack px-8 py-6 text-center w-full rounded-l-xl">
+              <h3 className="text-lg font-semibold mb-2 text-lotionWhite">Residential Roofing</h3>
+              <p className="text-sm text-brightGrey">
                 Protecting homes with durable, high-quality roofing solutions tailored for long-lasting safety and curb appeal.
               </p>
             </div>
-            <div className="bg-gray-200 px-8 py-4 rounded-lg sm:rounded-none text-center max-w-md mx-auto">
-              <h3 className="text-lg font-semibold mb-2 text-winterBlack">Commercial Roofing</h3>
-              <p className="text-sm text-winterBlack">
+            <div className="bg-shadowBlack px-8 py-6 text-center w-full rounded-r-xl">
+              <h3 className="text-lg font-semibold mb-2 text-lotionWhite">Commercial Roofing</h3>
+              <p className="text-sm text-brightGrey">
                 Expert roofing services for businesses, ensuring energy efficiency, weather resistance, and low maintenance costs.
-              </p>
-            </div>
-             <div className="bg-gray-200 px-8 py-4 rounded-lg sm:rounded-r-xl sm:rounded-l-none text-center max-w-md mx-auto">
-              <h3 className="text-lg font-semibold mb-2 text-winterBlack">Industrial Roofing</h3>
-              <p className="text-sm text-winterBlack">
-                Strong and reliable roofing systems designed to withstand extreme conditions and enhance operational efficiency.
               </p>
             </div>
           </div>
         </section>
-
+        <div className="bg-black py-8 sm:py-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+                {stats.map((stat) => (
+                <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
+                  <dt className="text-base/7 text-brightGrey">{stat.name}</dt>
+                  <dd className="order-first text-3xl font-semibold tracking-tight tracking-wide text-lotionWhite sm:text-5xl">
+                    {stat.value}
+                  </dd>
+                </div>
+                ))}
+              </dl>
+            </div>
+          </div>
       </div>
-      <footer className="absolute bottom-0 left-0 w-full py-4 flex items-center justify-center">
-          <span className="text-sm text-winterBlack text-center">
-              © 2025 Francisco's Roofing, Inc. All rights reserved.
-          </span>
+      <footer className="absolute inset-x-0 bottom-0 z-50 py-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">
+          {/* Left Section: Copyright and License */}
+          <div className="text-xs sm:text-sm text-lotionWhite text-center sm:text-left">
+            <span>© 2025 Francisco's Roofing, Inc. All rights reserved.</span>
+              <br className="sm:hidden" />
+            <span className="sm:ml-2">License No. #1086198</span>
+          </div>
+
+          {/* Right Section: Social Media Links */}
+          <div className="flex space-x-4 mt-4 sm:mt-0">
+            <a href="#" className="text-lotionWhite hover:text-winterBlack">
+              <FaFacebook size={25} />
+            </a>
+            <a href="#" className="text-lotionWhite hover:text-winterBlack">
+              <FaInstagram size={25} />
+            </a>
+            <a href="#" className="text-lotionWhite hover:text-winterBlack">
+              <FaGoogle size={25} />
+            </a>
+          </div>
+        </div>
       </footer>
     </div>     
   );

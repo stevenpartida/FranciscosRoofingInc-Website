@@ -11,6 +11,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         winterBlack: "#20211A",
+        shadowBlack: "#0C0C0C",
         lotionWhite: "#FDFDFD",
         brightGrey: "#BFBFBF",
         royalBlue: "#4169E1"
