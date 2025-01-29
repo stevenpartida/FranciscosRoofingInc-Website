@@ -12,7 +12,8 @@ export default {
         foreground: "var(--foreground)",
         winterBlack: "#20211A",
         lotionWhite: "#FDFDFD",
-        brightGrey: "E9E9E8"
+        brightGrey: "#BFBFBF",
+        royalBlue: "#4169E1"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

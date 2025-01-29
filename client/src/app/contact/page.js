@@ -15,7 +15,7 @@ import axios from 'axios';
 const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Services', href: '#' },
-  { name: 'Gallery', href: '#' },
+  { name: 'Projects', href: '#' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -79,9 +79,7 @@ export default function Contact() {
 
   return (
     <div className="relative h-screen sm:overflow-hidden bg-lotionWhite">
-
-
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className=" inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-4 sm:p-6 lg:px-8" aria-label="Global">
           <div className="flex flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
@@ -89,7 +87,7 @@ export default function Contact() {
               <Image
                 alt="Logo White 160x160"
                 src={LogoBlack}
-                className="h-10 w-auto sm:h-12"
+                className="h-12 w-auto sm:h-16"
               />
             </Link>
           </div>
@@ -100,7 +98,7 @@ export default function Contact() {
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="h-6 w-6 text-lotionWhite" />
+              <Bars3Icon aria-hidden="true" className="h-6 w-6 text-winterBlack" />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
@@ -108,7 +106,7 @@ export default function Contact() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-poppins font-semibold text-winterBlack relative after:content-[''] after:absolute after:bottom-0.5 after:left-0 after:w-0 after:h-[2px] after:bg-winterBlack after:transition-all after:duration-300 hover:after:w-full"
+                className="text-base font-medium  text-winterBlack relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-winterBlack after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
               </Link>
@@ -117,9 +115,9 @@ export default function Contact() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               href="/contact"
-              className="text-sm font-semibold bg-lotionWhite hover:bg-black hover:text-lotionWhite text-winterBlack font-bold py-2 px-4 rounded"
+              className="text-sm font-medium bg-winterBlack hover:bg-black hover:text-lotionWhite text-lotionWhite font-bold py-2 px-4 rounded"
             >
-              Free Quote <span aria-hidden="true">&rarr;</span>
+              Free Estimate <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         </nav>
@@ -139,7 +137,7 @@ export default function Contact() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="-m-2.5 rounded-md p-2.5 text-gray-400"
+                className="-m-2.5 rounded-md p-2.5 text-winterBlack"
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon aria-hidden="true" className="h-6 w-6 text-lotionWhite" />
@@ -163,7 +161,7 @@ export default function Contact() {
                     href="/contact"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-lotionWhite hover:bg-lotionWhite hover:text-winterBlack"
                   >
-                    Free Quote
+                    Free Estimate
                   </Link>
                 </div>
               </div>
@@ -171,11 +169,11 @@ export default function Contact() {
           </DialogPanel>
         </Dialog>
       </header>
-      <div className='relative flex items-center h-screen bg-lotionWhite'>
+      <div className='flex items-center bg-lotionWhite'>
         <div className='sm:max-w-7xl sm:mx-auto w-full grid grid-cols-1 md:grid-cols-2 sm:gap-8 bg-lotionWhite'>
             {/* left side */}
-            <div className='px-8 py-20'>
-                <h1 className='text-4xl font-bold mb-4 text-winterBlack'>Get in touch</h1>
+            <div className='px-8 py-10'>
+                <h1 className='text-4xl font-semibold mb-4 uppercase text-winterBlack'>Get in touch</h1>
                 <p className='text-base mb-8 text-winterBlack '>Got roofing questions or need a quote? Contact us today! We’re here to assist you every step of the way and offer free, no-obligation estimates to get your project started with confidence.</p>
                 <div className='space-y-4 text-winterBlack'>
                     <p className="flex items-center gap-2">
@@ -250,8 +248,8 @@ export default function Contact() {
                 </div>
             </div>
             {/* right side */}
-            <div className='px-8 py-20'>
-                <form onSubmit={handleSubmit}>
+            <div className='px-8 mt-9 mb-20 '>
+                <form onSubmit={handleSubmit} className="px-8 py-14">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div>
                             <label className="block text-sm font-semibold font-poppins text-winterBlack" htmlFor="firstName">
@@ -261,9 +259,10 @@ export default function Contact() {
                                 id="firstName"
                                 name="firstName"
                                 type="text"
+                                placeholder='First Name'
                                 value={formData.firstName}
                                 onChange={handleChange}
-                                className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                                className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                             /> 
                         </div>
                         <div>
@@ -274,9 +273,10 @@ export default function Contact() {
                                 id="lastName"
                                 name="lastName"
                                 type="text"
+                                placeholder='Last Name'
                                 value={formData.lastName}
                                 onChange={handleChange}
-                                className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                                className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                             />
                         </div>
                     </div>
@@ -288,9 +288,10 @@ export default function Contact() {
                             id="email"
                             name="email"
                             type="email"
+                            placeholder="you@email.com"
                             value={formData.email}
                             onChange={handleChange}
-                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                            className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                         />
                     </div>
                     <div className="mt-4">
@@ -301,9 +302,10 @@ export default function Contact() {
                             id="phone"
                             name="phone"
                             type="text"
+                            placeholder='(555) 000-0000'
                             value={formData.phone}
                             onChange={handleChange}
-                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                            className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                         />
                     </div>
                     <div className="mt-4">
@@ -314,9 +316,10 @@ export default function Contact() {
                             id="message"
                             name="message"
                             rows="4"
+                            placeholder="Leave us a message..."
                             value={formData.message}
                             onChange={handleChange}
-                            className="mt-3 px-4 py-2 block w-full border border-winterBlack rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                            className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
                         ></textarea>
                     </div>
                     <div className="mt-8 flex justify-end flex-col text-center">
@@ -333,9 +336,9 @@ export default function Contact() {
                 </form>
             </div>
         </div>
-        <footer className="absolute bottom-0 left-0 w-full py-4 flex items-center justify-center bg-lotionWhite">
+        <footer className="absolute bottom-0 left-0 w-full py-4 flex items-center justify-center">
             <span className="text-sm text-winterBlack text-center">
-                © 2022 Francisco's Roofing, Inc. All rights reserved.
+                © 2025 Francisco's Roofing, Inc. All rights reserved.
             </span>
         </footer>
       </div>     
