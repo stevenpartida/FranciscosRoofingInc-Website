@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Dialog, DialogPanel } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { FaFacebook, FaInstagram, FaGoogle } from 'react-icons/fa';
-import LogoWhite from './assets/images/LogoWhite.png';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
+import LogoWhite from "./assets/images/LogoWhite.png";
 
 const navigation = [
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '#' },
-  { name: 'Projects', href: '#' },
-  { name: 'Contact', href: '/contact' },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "#" },
+  { name: "Projects", href: "#" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Home() {
@@ -32,7 +32,10 @@ export default function Home() {
       <div className="absolute inset-0 bg-black/50"></div>
 
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav className="flex items-center justify-between p-4 sm:p-6 lg:px-8" aria-label="Global">
+        <nav
+          className="flex items-center justify-between p-4 sm:p-6 lg:px-8"
+          aria-label="Global"
+        >
           <div className="flex flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Francisco's Roofing Inc</span>
@@ -50,7 +53,10 @@ export default function Home() {
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-lotionWhite"
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="h-6 w-6 text-lotionWhite" />
+              <Bars3Icon
+                aria-hidden="true"
+                className="h-6 w-6 text-lotionWhite"
+              />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
@@ -74,7 +80,11 @@ export default function Home() {
           </div>
         </nav>
 
-        <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+        <Dialog
+          open={mobileMenuOpen}
+          onClose={setMobileMenuOpen}
+          className="lg:hidden"
+        >
           <div className="fixed inset-0 z-50" />
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-winterBlack px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
@@ -92,7 +102,10 @@ export default function Home() {
                 className="-m-2.5 rounded-md p-2.5 text-gray-400"
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="h-6 w-6 text-lotionWhite" />
+                <XMarkIcon
+                  aria-hidden="true"
+                  className="h-6 w-6 text-lotionWhite"
+                />
               </button>
             </div>
             <div className="mt-6 flow-root">
@@ -126,7 +139,14 @@ export default function Home() {
         <div className="mx-auto max-w-xl sm:max-w-2xl py-16 sm:py-32 lg:py-48">
           <div className=" mb-4 sm:mb-8 flex justify-center">
             <div className="relative rounded-full px-2 py-0.5 sm:px-3 sm:py-1 font-medium sm:font-medium drop-shadow-md sm:drop-shadow-2xl text-xs sm:text-sm text-lotionWhite ring-1 ring-lotionWhite hover:ring-winterBlack backdrop-blur-md">
-              See our recent work. <a href="#" className="font-medium sm:font-bold text-blue-300  "><span className="absolute inset-0 " aria-hidden="true"></span><span className='underline underline-offset-2'>Projects</span> <span aria-hidden="true">&rarr;</span></a>
+              See our recent work.{" "}
+              <a href="#" className="font-medium sm:font-bold text-bluePrimary">
+                <span className="absolute inset-0 " aria-hidden="true"></span>
+                <span className="underline underline-offset-2">
+                  Projects
+                </span>{" "}
+                <span aria-hidden="true">&rarr;</span>
+              </a>
             </div>
           </div>
           <div className="text-center">
@@ -134,7 +154,11 @@ export default function Home() {
               Francisco's Roofing, Inc
             </h1>
             <p className="mt-6 text-poppins text-base sm:text-lg text-lotionWhite drop-shadow-2xl">
-              At Francisco's Roofing, Inc, we provide top-quality roofing services with years of expertise. As a Licensed and Insured company, we deliver reliable results with exceptional craftsmanship. Whether it's repairs, replacements, or installations, we’re here to protect your property.
+              At Francisco's Roofing, Inc, we provide top-quality roofing
+              services with years of expertise. As a Licensed and Insured
+              company, we deliver reliable results with exceptional
+              craftsmanship. Whether it's repairs, replacements, or
+              installations, we’re here to protect your property.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -143,9 +167,12 @@ export default function Home() {
               >
                 Get started
               </a>
-              <a href="#" className="text-sm font-semibold text-lotionWhite hover:text-winterBlack">
+              <Link
+                href="/about"
+                className="text-sm font-semibold text-lotionWhite hover:text-winterBlack"
+              >
                 Learn more <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -156,7 +183,7 @@ export default function Home() {
           {/* Left Section: Copyright and License */}
           <div className="text-xs sm:text-sm text-lotionWhite text-center sm:text-left">
             <span>© 2025 Francisco's Roofing, Inc. All rights reserved.</span>
-              <br className="sm:hidden" />
+            <br className="sm:hidden" />
             <span className="sm:ml-2">License No. #1086198</span>
           </div>
 

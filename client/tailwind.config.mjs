@@ -14,12 +14,14 @@ export default {
         shadowBlack: "#0C0C0C",
         lotionWhite: "#FDFDFD",
         brightGrey: "#BFBFBF",
-        royalBlue: "#4169E1"
+        royalBlue: "#4169E1",
+        bluePrimary: "#3B82F6",
+        blueSecondary: "#1E3ABA",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
-      }
+      },
     },
   },
   plugins: [],

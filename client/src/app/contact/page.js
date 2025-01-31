@@ -1,86 +1,97 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Dialog, DialogPanel } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import LogoBlack from '../assets/images/LogoBlack.png'
-import LogoWhite from '../assets/images/LogoWhite.png';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import LogoBlack from "../assets/images/LogoBlack.png";
+import LogoWhite from "../assets/images/LogoWhite.png";
 import { LuPhone, LuMail } from "react-icons/lu";
 import { LuClock } from "react-icons/lu";
-import { FaFacebook, FaInstagram, FaGoogle } from 'react-icons/fa';
-import axios from 'axios';
+import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
+import axios from "axios";
 
 const navigation = [
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '#' },
-  { name: 'Projects', href: '#' },
-  { name: 'Contact', href: '/contact' },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "#" },
+  { name: "Projects", href: "#" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Contact() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setFormData({...formData, [name]: value});
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     //Validation
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
-        setErrorMessage('All fields are required.');
-        setStatus('error');
-        return;
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.message
+    ) {
+      setErrorMessage("All fields are required.");
+      setStatus("error");
+      return;
     }
 
     if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-        setErrorMessage('Invalid email address.');
-        setStatus('error');
-        return;
+      setErrorMessage("Invalid email address.");
+      setStatus("error");
+      return;
     }
 
-    setStatus('loading');
-    setErrorMessage('');
+    setStatus("loading");
+    setErrorMessage("");
 
     try {
-      const response = await axios.post('http://localhost:5001/api/contact', formData);
-        setStatus('success');
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            message: '',
-        }); //Reset form
+      const response = await axios.post(
+        "http://localhost:5001/api/contact",
+        formData
+      );
+      setStatus("success");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      }); //Reset form
 
-        setTimeout(() => setStatus(null), 100000);
+      setTimeout(() => setStatus(null), 100000);
     } catch (error) {
-        console.error('Error submitting form:', error);
-        setErrorMessage('An unexpected error occurred. Please try again later.');
-        setStatus('error');
+      console.error("Error submitting form:", error);
+      setErrorMessage("An unexpected error occurred. Please try again later.");
+      setStatus("error");
     }
   };
 
   return (
     <div className="relative h-screen sm:overflow-hidden bg-lotionWhite">
       <header className=" inset-x-0 top-0 z-50">
-        <nav className="flex items-center justify-between p-4 sm:p-6 lg:px-8" aria-label="Global">
+        <nav
+          className="flex items-center justify-between p-4 sm:p-6 lg:px-8"
+          aria-label="Global"
+        >
           <div className="flex flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Francisco's Roofing Inc</span>
@@ -98,7 +109,10 @@ export default function Contact() {
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="h-6 w-6 text-winterBlack" />
+              <Bars3Icon
+                aria-hidden="true"
+                className="h-6 w-6 text-winterBlack"
+              />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
@@ -122,7 +136,11 @@ export default function Contact() {
           </div>
         </nav>
 
-        <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+        <Dialog
+          open={mobileMenuOpen}
+          onClose={setMobileMenuOpen}
+          className="lg:hidden"
+        >
           <div className="fixed inset-0 z-50" />
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-winterBlack px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
@@ -140,7 +158,10 @@ export default function Contact() {
                 className="-m-2.5 rounded-md p-2.5 text-winterBlack"
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="h-6 w-6 text-lotionWhite" />
+                <XMarkIcon
+                  aria-hidden="true"
+                  className="h-6 w-6 text-lotionWhite"
+                />
               </button>
             </div>
             <div className="mt-6 flow-root">
@@ -169,179 +190,191 @@ export default function Contact() {
           </DialogPanel>
         </Dialog>
       </header>
-      <div className='flex items-center bg-lotionWhite'>
-        <div className='sm:max-w-7xl sm:mx-auto w-full grid grid-cols-1 md:grid-cols-2 sm:gap-8 bg-lotionWhite'>
-            {/* left side */}
-            <div className='px-8 py-10'>
-                <h1 className='text-4xl font-semibold mb-4 uppercase text-winterBlack'>Get in touch</h1>
-                <p className='text-base mb-8 text-winterBlack '>Got roofing questions or need a quote? Contact us today! We’re here to assist you every step of the way and offer free, no-obligation estimates to get your project started with confidence.</p>
-                <div className='space-y-4 text-winterBlack'>
-                    <p className="flex items-center gap-2">
-                        <span className="font-medium"><LuPhone size={20}/></span>
-                        +1 (323) 253-5146
-                    </p>
-                    <p className="flex items-center gap-2">
-                        <span className="font-medium"><LuMail size={20}/></span>
-                        franciscosroofinginc.22@gmail.com
-                    </p>
-                    <p className="flex items-center gap-2">
-                        <span className="font-medium">License No.</span>
-                        #1086198
-                    </p>
-                </div>
-                <div className='mt-8 text-winterBlack'>
-                    <h2 className='flex items-center gap-2 font-bold'>
-                        <LuClock size={25}/>
-                        <span className='text-2xl'>Open Hours</span>
-                    </h2>
-                    <div className='mt-4 space-y-2 hidden sm:block max-w-xs'>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Monday:</span>
-                            <span>8 AM - 5 PM</span>
-                        </p>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Tuesday:</span>
-                            <span>8 AM - 5 PM</span>
-                        </p>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Wednesday:</span>
-                            <span>8 AM - 5 PM</span>
-                        </p>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Thursday:</span>
-                            <span>8 AM - 5 PM</span>
-                        </p>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Friday:</span>
-                            <span>8 AM - 5 PM</span>
-                        </p>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Saturday:</span>
-                            <span>8 AM - 5 PM</span>
-                        </p>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Sunday:</span>
-                            <span>Closed</span>
-                        </p>
-                    </div>
-                    <div className='mt-4 space-y-2 sm:hidden max-w-xs'>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Monday - Saturday:</span>
-                            <span>8 AM - 5 PM</span>
-                        </p>
-                        <p className='flex justify-between'>
-                            <span className='font-medium'>Sunday:</span>
-                            <span>Closed</span>
-                        </p>
-                    </div>
-                    <div className="mt-6 flex space-x-4">
-                        <a href="#" className="text-winterBlack hover:text-black">
-                            <FaFacebook size={25} />
-                        </a>
-                        <a href="#" className="text-winterBlack hover:text-black">
-                            <FaInstagram size={25} />
-                        </a>
-                        <a href="https://g.co/kgs/fzhRzAs" className="text-winterBlack hover:text-black">
-                            <FaGoogle size={25} />
-                        </a>
-                    </div>
-                </div>
+      <div className="flex items-center bg-lotionWhite">
+        <div className="sm:max-w-7xl sm:mx-auto w-full grid grid-cols-1 md:grid-cols-2 sm:gap-8 bg-lotionWhite">
+          {/* left side */}
+          <div className="px-8 py-10">
+            <h3 className="text-shadowBlack uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
+              Get in touch
+            </h3>
+            <h1 className="text-4xl font-semibold mb-4 uppercase text-winterBlack">
+              contact us
+            </h1>
+            <p className="text-base mb-8 text-shadowBlack">
+              Got roofing questions or need a quote? Contact us today! We’re
+              here to assist you every step of the way and offer free,
+              no-obligation estimates to get your project started with
+              confidence.
+            </p>
+            <div className="text-winterBlack">
+              <a href="tel:+13232535146" className="mb-4 block">
+                <p className="flex items-center gap-2">
+                  <span className="font-medium">
+                    <LuPhone size={20} />
+                  </span>
+                  +1 (323) 253-5146
+                </p>
+              </a>
+              <a href="mailto:example@email.com" className="mb-8 block">
+                <p className="flex items-center gap-2">
+                  <span className="font-medium">
+                    <LuMail size={20} />
+                  </span>
+                  franciscosroofinginc.22@gmail.com
+                </p>
+              </a>
+              <p className="flex items-center gap-2">
+                <span className="font-medium">License No.</span>
+                #1086198
+              </p>
             </div>
-            {/* right side */}
-            <div className='px-8 mt-9 mb-20 '>
-                <form onSubmit={handleSubmit} className="px-8 py-14">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div>
-                            <label className="block text-sm font-semibold font-poppins text-winterBlack" htmlFor="firstName">
-                                First Name
-                            </label>
-                            <input
-                                id="firstName"
-                                name="firstName"
-                                type="text"
-                                placeholder='First Name'
-                                value={formData.firstName}
-                                onChange={handleChange}
-                                className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
-                            /> 
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold font-poppins text-winterBlack" htmlFor="lastName">
-                                Last Name
-                            </label>
-                            <input
-                                id="lastName"
-                                name="lastName"
-                                type="text"
-                                placeholder='Last Name'
-                                value={formData.lastName}
-                                onChange={handleChange}
-                                className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
-                            />
-                        </div>
-                    </div>
-                    <div className="mt-4">
-                        <label className="block text-sm font-semibold font-poppins text-winterBlack" htmlFor="email">
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="you@email.com"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
-                        />
-                    </div>
-                    <div className="mt-4">
-                        <label className="block text-sm font-semibold font-poppins text-winterBlack" htmlFor="phone">
-                            Phone number
-                        </label>
-                        <input
-                            id="phone"
-                            name="phone"
-                            type="text"
-                            placeholder='(555) 000-0000'
-                            value={formData.phone}
-                            onChange={handleChange}
-                            className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
-                        />
-                    </div>
-                    <div className="mt-4">
-                        <label className="block text-sm font-semibold font-poppins text-winterBlack" htmlFor="message">
-                            Message
-                        </label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="4"
-                            placeholder="Leave us a message..."
-                            value={formData.message}
-                            onChange={handleChange}
-                            className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
-                        ></textarea>
-                    </div>
-                    <div className="mt-8 flex justify-end flex-col text-center">
-                        <button
-                            type="submit"
-                            className="bg-winterBlack text-lotionWhite py-2 px-4 rounded-lg hover:bg-black transition"
-                            disabled={status === 'loading'}
-                        >
-                            {status === 'loading' ? 'Sending...' : 'Send Message'}
-                        </button>
-                        {status === 'success' && <p className="text-green-500 mt-4">Message sent successfully!</p>}
-                        {status === 'error' && <p className="text-red-500 mt-4">{errorMessage}</p>}
-                    </div>
-                </form>
+            <div className="mt-8 text-winterBlack">
+              <h2 className="flex items-center gap-2 font-bold">
+                <LuClock size={25} />
+                <span className="text-2xl">Open Hours</span>
+              </h2>
+              <div className="mt-4 space-y-2 max-w-xs">
+                <p className="flex justify-between">
+                  <span className="font-medium">Monday - Friday:</span>
+                  <span>8 AM - 5 PM</span>
+                </p>
+                <p className="flex justify-between">
+                  <span className="font-medium">Saturday - Sunday:</span>
+                  <span>Closed</span>
+                </p>
+              </div>
+              <div className="mt-6 flex space-x-4">
+                <a href="#" className="text-winterBlack hover:text-black">
+                  <FaFacebook size={25} />
+                </a>
+                <a href="#" className="text-winterBlack hover:text-black">
+                  <FaInstagram size={25} />
+                </a>
+                <a
+                  href="https://g.co/kgs/fzhRzAs"
+                  className="text-winterBlack hover:text-black"
+                >
+                  <FaGoogle size={25} />
+                </a>
+              </div>
             </div>
+          </div>
+          {/* right side */}
+          <div className="px-8 mt-9 mb-20 ">
+            <form onSubmit={handleSubmit} className="px-8 py-14">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                  <label
+                    className="block text-sm font-semibold font-poppins text-winterBlack"
+                    htmlFor="firstName"
+                  >
+                    First Name
+                  </label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="First Name"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                  />
+                </div>
+                <div>
+                  <label
+                    className="block text-sm font-semibold font-poppins text-winterBlack"
+                    htmlFor="lastName"
+                  >
+                    Last Name
+                  </label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="Last Name"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <label
+                  className="block text-sm font-semibold font-poppins text-winterBlack"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                />
+              </div>
+              <div className="mt-4">
+                <label
+                  className="block text-sm font-semibold font-poppins text-winterBlack"
+                  htmlFor="phone"
+                >
+                  Phone number
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  placeholder="(555) 000-0000"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                />
+              </div>
+              <div className="mt-4">
+                <label
+                  className="block text-sm font-semibold font-poppins text-winterBlack"
+                  htmlFor="message"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Leave us a message..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                ></textarea>
+              </div>
+              <div className="mt-8 flex justify-end flex-col text-center">
+                <button
+                  type="submit"
+                  className="bg-winterBlack text-lotionWhite py-2 px-4 rounded-lg hover:bg-black transition"
+                  disabled={status === "loading"}
+                >
+                  {status === "loading" ? "Sending..." : "Send Message"}
+                </button>
+                {status === "success" && (
+                  <p className="text-green-500 mt-4">
+                    Message sent successfully!
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="text-red-500 mt-4">{errorMessage}</p>
+                )}
+              </div>
+            </form>
+          </div>
         </div>
         <footer className="absolute bottom-0 left-0 w-full py-4 flex items-center justify-center">
-            <span className="text-sm text-winterBlack text-center">
-                © 2025 Francisco's Roofing, Inc. All rights reserved.
-            </span>
+          <span className="text-sm text-winterBlack text-center">
+            © 2025 Francisco's Roofing, Inc. All rights reserved.
+          </span>
         </footer>
-      </div>     
+      </div>
     </div>
   );
 }
