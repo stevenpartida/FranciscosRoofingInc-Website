@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import LogoBlack from "../assets/images/LogoBlack.png";
 import LogoWhite from "../assets/images/LogoWhite.png";
 import { LuPhone, LuMail } from "react-icons/lu";
@@ -24,14 +26,26 @@ export default function Contact() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
+    address: "",
     email: "",
     phone: "",
+    serviceType: "Select Service",
     message: "",
   });
 
   const [status, setStatus] = useState(null);
+
+  const serviceOptions = [
+    "Roof Repair",
+    "Roof Installation",
+    "Roof Replacement",
+    "Roof Estimate",
+  ];
+
+  const handleServiceSelect = (service) => {
+    setFormData({ ...formData, serviceType: service });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,9 +57,10 @@ export default function Contact() {
 
     //Validation
     if (
-      !formData.firstName ||
-      !formData.lastName ||
+      !formData.fullName ||
+      !formData.address ||
       !formData.email ||
+      formData.serviceType === "Select Service" ||
       !formData.phone ||
       !formData.message
     ) {
@@ -70,10 +85,11 @@ export default function Contact() {
       );
       setStatus("success");
       setFormData({
-        firstName: "",
-        lastName: "",
+        fullName: "",
+        address: "",
         email: "",
         phone: "",
+        serviceType: "Select Service",
         message: "",
       }); //Reset form
 
@@ -272,16 +288,16 @@ export default function Contact() {
                 <div>
                   <label
                     className="block text-sm font-semibold font-poppins text-woodsmoke950"
-                    htmlFor="firstName"
+                    htmlFor="fullName"
                   >
-                    First Name
+                    Full Name
                   </label>
                   <input
-                    id="firstName"
-                    name="firstName"
+                    id="fullName"
+                    name="fullName"
                     type="text"
-                    placeholder="First Name"
-                    value={formData.firstName}
+                    placeholder="Full Name"
+                    value={formData.fullName}
                     onChange={handleChange}
                     className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                   />
@@ -291,14 +307,14 @@ export default function Contact() {
                     className="block text-sm font-semibold font-poppins text-woodsmoke950"
                     htmlFor="lastName"
                   >
-                    Last Name
+                    Address
                   </label>
                   <input
-                    id="lastName"
-                    name="lastName"
+                    id="address"
+                    name="address"
                     type="text"
-                    placeholder="Last Name"
-                    value={formData.lastName}
+                    placeholder="Address (Street, City, ZIP)"
+                    value={formData.address}
                     onChange={handleChange}
                     className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                   />
@@ -315,24 +331,7 @@ export default function Contact() {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="you@email.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
-                />
-              </div>
-              <div className="mt-4">
-                <label
-                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
-                  htmlFor="email"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="you@email.com"
+                  placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleChange}
                   className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
@@ -354,6 +353,48 @@ export default function Contact() {
                   onChange={handleChange}
                   className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                 />
+              </div>
+              <div className="mt-4">
+                <label
+                  htmlFor="serviceType"
+                  className="block text-sm font-semibold text-woodsmoke950"
+                >
+                  Service Type
+                </label>
+                <Menu as="div" className="w-full relative">
+                  <div>
+                    <MenuButton className="mt-3 inline-flex w-full items-center justify-between rounded-md bg-white px-4 py-3 text-sm font-medium text-woodsmoke950 ring-1 shadow-xs ring-woodsmoke300 ring-inset hover:bg-gray-50">
+                      <span>{formData.serviceType}</span>
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="ml-auto size-5 text-woodsmoke300 "
+                      />
+                    </MenuButton>
+                  </div>
+
+                  <MenuItems
+                    transition
+                    className="absolute left-0 z-10 mt-1 w-full rounded-md bg-woodsmoke50 ring-1 shadow-lg ring-black/5 focus:outline-hidden"
+                  >
+                    <div className="py-1">
+                      {serviceOptions.map((service) => (
+                        <MenuItem key={service}>
+                          {({ active }) => (
+                            <button
+                              type="button"
+                              onClick={() => handleServiceSelect(service)}
+                              className={`block w-full px-4 py-2 text-left text-sm text-woodsmoke950 ${
+                                active ? "bg-gray-100 text-gray-900" : ""
+                              }`}
+                            >
+                              {service}
+                            </button>
+                          )}
+                        </MenuItem>
+                      ))}
+                    </div>
+                  </MenuItems>
+                </Menu>
               </div>
               <div className="mt-4">
                 <label

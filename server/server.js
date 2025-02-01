@@ -1,15 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const nodemailer = require('nodemailer');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const nodemailer = require("nodemailer");
 const app = express();
 const PORT = 5001;
 
-const dotenv = require('dotenv');
-dotenv.config({ path: './server/.env' });
+const dotenv = require("dotenv");
+dotenv.config({ path: "./server/.env" });
 const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS;
-
 
 //Middleware
 app.use(bodyParser.json());
@@ -17,44 +16,48 @@ app.use(cors());
 
 // NodeMailer transporter setup
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: emailUser,
-        pass: emailPass
-    }
+  service: "gmail",
+  auth: {
+    user: emailUser,
+    pass: emailPass,
+  },
 });
 
 // Route to handle form submissions
-app.post('/api/contact', (req, res) => {
-    const { firstName, lastName, email, phone, message } = req.body;
+app.post("/api/contact", (req, res) => {
+  const { fullName, address, email, phone, serviceType, message } = req.body;
 
-    // Nodemailer email options
-    const mailOptions = {
-        from: emailUser, // Sender's email (from the form)
-        to: emailUser, // Replace with your recipient email address
-        subject: `New Inquiry: ${firstName} ${lastName} - Contact Form Submission`,
-        text: `
+  // Nodemailer email options
+  const mailOptions = {
+    from: emailUser, // Sender's email (from the form)
+    to: emailUser, // Replace with your recipient email address
+    subject: `New Inquiry: ${fullName} - Contact Form Submission`,
+    text: `
             You have a new contact form submission:
-            Name: ${firstName} ${lastName}
+            Name: ${fullName}
+            Address: ${address}
             Email: ${email}
             Phone: ${phone}
+            Service Type: ${serviceType}
             Message: ${message}
         `,
-    };
+  };
 
-    // Send the email
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-            res.status(500).json({ message: 'Error sending email' });
-        } else {
-            console.log('Email sent:', info.response);
-            res.status(200).json({ message: 'Form submission received and email sent!' });
-        }
-    });
+  // Send the email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending email:", error);
+      res.status(500).json({ message: "Error sending email" });
+    } else {
+      console.log("Email sent:", info.response);
+      res
+        .status(200)
+        .json({ message: "Form submission received and email sent!" });
+    }
+  });
 });
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
