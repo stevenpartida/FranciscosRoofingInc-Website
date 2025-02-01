@@ -102,7 +102,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="relative h-screen sm:overflow-hidden bg-woodsmoke50">
+    <div className="flex flex-col min-h-screen sm:overflow-hidden bg-woodsmoke50">
       <header className="inset-x-0 top-0 z-50">
         <nav
           className="flex items-center justify-between p-4 sm:p-6 lg:px-8"
@@ -282,14 +282,11 @@ export default function Contact() {
             </div>
           </div>
           {/* right side */}
-          <div className="px-8 mb-20 ">
-            <form onSubmit={handleSubmit} className="px-8 py-14">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div>
-                  <label
-                    className="block text-sm font-semibold font-poppins text-woodsmoke950"
-                    htmlFor="fullName"
-                  >
+          <div className="w-full max-w-lg mx-auto">
+            <form onSubmit={handleSubmit} className="px-4 sm:px-8 py-14 w-full">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-5">
+                <div className="w-full">
+                  <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                     Full Name
                   </label>
                   <input
@@ -299,32 +296,26 @@ export default function Contact() {
                     placeholder="Full Name"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
+                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
                   />
                 </div>
-                <div>
-                  <label
-                    className="block text-sm font-semibold font-poppins text-woodsmoke950"
-                    htmlFor="lastName"
-                  >
+                <div className="w-full">
+                  <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                     Address
                   </label>
                   <input
                     id="address"
                     name="address"
                     type="text"
-                    placeholder="Address (Street, City, ZIP)"
+                    placeholder="Address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
+                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
                   />
                 </div>
               </div>
-              <div className="mt-4">
-                <label
-                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
-                  htmlFor="email"
-                >
+              <div className="mt-4 w-full">
+                <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                   Email
                 </label>
                 <input
@@ -334,15 +325,12 @@ export default function Contact() {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
                 />
               </div>
-              <div className="mt-4">
-                <label
-                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
-                  htmlFor="phone"
-                >
-                  Phone number
+              <div className="mt-4 w-full">
+                <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
+                  Phone Number
                 </label>
                 <input
                   id="phone"
@@ -351,56 +339,11 @@ export default function Contact() {
                   placeholder="(555) 000-0000"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
                 />
               </div>
-              <div className="mt-4">
-                <label
-                  htmlFor="serviceType"
-                  className="block text-sm font-semibold text-woodsmoke950"
-                >
-                  Service Type
-                </label>
-                <Menu as="div" className="w-full relative">
-                  <div>
-                    <MenuButton className="mt-3 inline-flex w-full items-center justify-between rounded-md bg-white px-4 py-3 text-sm font-medium text-woodsmoke950 ring-1 shadow-xs ring-woodsmoke300 ring-inset hover:bg-gray-50">
-                      <span>{formData.serviceType}</span>
-                      <ChevronDownIcon
-                        aria-hidden="true"
-                        className="ml-auto size-5 text-woodsmoke300 "
-                      />
-                    </MenuButton>
-                  </div>
-
-                  <MenuItems
-                    transition
-                    className="absolute left-0 z-10 mt-1 w-full rounded-md bg-woodsmoke50 ring-1 shadow-lg ring-black/5 focus:outline-hidden"
-                  >
-                    <div className="py-1">
-                      {serviceOptions.map((service) => (
-                        <MenuItem key={service}>
-                          {({ active }) => (
-                            <button
-                              type="button"
-                              onClick={() => handleServiceSelect(service)}
-                              className={`block w-full px-4 py-2 text-left text-sm text-woodsmoke950 ${
-                                active ? "bg-gray-100 text-gray-900" : ""
-                              }`}
-                            >
-                              {service}
-                            </button>
-                          )}
-                        </MenuItem>
-                      ))}
-                    </div>
-                  </MenuItems>
-                </Menu>
-              </div>
-              <div className="mt-4">
-                <label
-                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
-                  htmlFor="message"
-                >
+              <div className="mt-4 w-full">
+                <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                   Message
                 </label>
                 <textarea
@@ -410,35 +353,26 @@ export default function Contact() {
                   placeholder="Leave us a message..."
                   value={formData.message}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
                 ></textarea>
               </div>
               <div className="mt-8 flex justify-end flex-col text-center">
                 <button
                   type="submit"
-                  className="bg-woodsmoke950 text-woodsmoke50 py-2 px-4 rounded-lg hover:bg-woodsmoke900 active:bg-woodsmoke800 transition"
-                  disabled={status === "loading"}
+                  className="w-full sm:w-auto bg-woodsmoke950 text-woodsmoke50 py-2 px-4 rounded-lg"
                 >
-                  {status === "loading" ? "Sending..." : "Send Message"}
+                  Send Message
                 </button>
-                {status === "success" && (
-                  <p className="text-green-500 mt-4">
-                    Message sent successfully!
-                  </p>
-                )}
-                {status === "error" && (
-                  <p className="text-red-500 mt-4">{errorMessage}</p>
-                )}
               </div>
             </form>
           </div>
         </div>
-        <footer className="absolute bottom-0 left-0 w-full py-4 flex items-center justify-center">
-          <span className="text-sm text-winterBlack text-center">
-            © 2025 Francisco's Roofing, Inc. All rights reserved.
-          </span>
-        </footer>
       </div>
+      <footer className="flex items-center justify-center py-4 sm:mt-16">
+        <span className="text-xs sm:text-sm text-woodsmoke950 text-center ">
+          © 2025 Francisco's Roofing, Inc. All rights reserved.
+        </span>
+      </footer>
     </div>
   );
 }
