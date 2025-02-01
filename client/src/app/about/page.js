@@ -30,8 +30,8 @@ const stats = [
 export default function About() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <div className="flex flex-col min-h-screen bg-black sm:overflow-hidden">
-      <header className=" inset-x-0 top-0 z-50">
+    <div className="flex flex-col min-h-screen bg-woodsmoke950 sm:overflow-hidden">
+      <header className="inset-x-0 top-0 z-50">
         <nav
           className="flex items-center justify-between p-4 sm:p-6 lg:px-8"
           aria-label="Global"
@@ -50,12 +50,12 @@ export default function About() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-woodsmoke50"
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon
                 aria-hidden="true"
-                className="h-6 w-6 text-lotionWhite"
+                className="h-6 w-6 text-woodsmoke50"
               />
             </button>
           </div>
@@ -64,7 +64,7 @@ export default function About() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-base font-medium  text-lotionWhite relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-lotionWhite after:transition-all after:duration-300 hover:after:w-full"
+                className="text-base font-medium text-woodsmoke50 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-woodsmoke50 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
               </Link>
@@ -73,7 +73,7 @@ export default function About() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               href="/contact"
-              className="text-sm font-medium bg-lotionWhite hover:bg-winterBlack hover:text-lotionWhite text-winterBlack font-bold py-2 px-4 rounded"
+              className="text-sm font-medium bg-woodsmoke500 hover:bg-woodsmoke600 active:bg-woodsmoke700 hover:text-woodsmoke50 text-woodsmoke50 font-bold py-2 px-4 rounded"
             >
               Free Estimate <span aria-hidden="true">&rarr;</span>
             </Link>
@@ -86,7 +86,7 @@ export default function About() {
           className="lg:hidden"
         >
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-winterBlack px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-woodsmoke950 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-woodsmoke400">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Francisco's Roofing Inc</span>
@@ -99,7 +99,7 @@ export default function About() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="-m-2.5 rounded-md p-2.5 text-winterBlack"
+                className="-m-2.5 rounded-md p-2.5 text-woodsmoke50"
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon
@@ -112,19 +112,19 @@ export default function About() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-lotionWhite hover:bg-lotionWhite hover:text-winterBlack"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium  text-woodsmoke50 hover:bg-woodsmoke50 hover:text-woodsmoke950"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="py-6">
                   <Link
                     href="/contact"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-lotionWhite hover:bg-lotionWhite hover:text-winterBlack"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-medium  text-woodsmoke50 hover:bg-woodsmoke50 hover:text-woodsmoke950"
                   >
                     Free Estimate
                   </Link>
@@ -147,13 +147,13 @@ export default function About() {
 
           {/* Text Content */}
           <div className="flex-1 p-6 min-w-0 ">
-            <h3 className="text-brightGrey uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
+            <h3 className="text-woodsmoke100 uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
               About Francisco's Roofing, Inc
             </h3>
-            <h1 className="text-lotionWhite capitalize font-bold text-2xl sm:text-4xl leading-snug text-balance">
+            <h1 className="text-woodsmoke50 capitalize font-extrabold text-2xl sm:text-4xl leading-snug text-balance">
               Who Are We
             </h1>
-            <p className="text-brightGrey mt-2">
+            <p className="text-woodsmoke100 mt-2">
               Francisco’s Roofing, Inc. is a{" "}
               <span className="font-semibold">family and veteran-owned</span>{" "}
               roofing company, proudly serving the{" "}
@@ -177,33 +177,28 @@ export default function About() {
                 fully licensed and insured
               </span>{" "}
               company, we are committed to safety, quality, and customer
-              satisfaction. Whether you need minor repairs or a full roof
-              installation, we use premium materials and expert techniques to
-              ensure top results.
-              <br />
-              <br />
-              At Francisco’s Roofing, Inc., your trust is our foundation, and
-              your roof is our priority.{" "}
+              satisfaction. At Francisco’s Roofing, Inc., your trust is our
+              foundation, and your roof is our priority.{" "}
               <span className="font-semibold">
                 Contact us today for your free roofing estimate!
               </span>
             </p>
-            <div className="flex justify-center sm:justify-end mt-8 sm:mt-4">
+            <div className="flex justify-center sm:justify-end mt-8 sm:mt-6">
               <Link
                 href="/contact"
-                className="text-sm font-medium bg-bluePrimary hover:bg-blueSecondary text-lotionWhite font-bold py-2 px-4 rounded"
+                className="text-sm font-medium bg-woodsmoke500 hover:bg-woodsmoke600 active:bg-woodsmoke700 text-woodsmoke50 font-bold py-2 px-4 rounded"
               >
                 Get in Touch <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>
         </div>
-        <section className="text-white py-12 px-2 sm:px-6 mt-2">
+        <section className="py-12 px-2 sm:px-6 mt-2">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-balance text-lotionWhite">
+            <h2 className="text-3xl font-bold text-balance text-woodsmoke50">
               Trusted by Homeowners & Businesses for Quality Roofing
             </h2>
-            <p className="text-brightGrey mt-2">
+            <p className="text-woodsmoke100 mt-2">
               From residential homes to large-scale commercial, we provide
               durable, high-quality roofing solutions tailored to your needs.
               With expert craftsmanship and premium materials, we ensure lasting
@@ -211,26 +206,26 @@ export default function About() {
             </p>
           </div>
           <div className="mt-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-1">
-            <div className="bg-shadowBlack px-8 py-6 text-center w-full rounded-xl sm:rounded-l-xl sm:rounded-r-none">
-              <h3 className="text-lg font-semibold mb-2 text-lotionWhite">
+            <div className="bg-woodsmoke900 px-8 py-6 text-center w-full rounded-xl sm:rounded-l-xl sm:rounded-r-none">
+              <h3 className="text-lg font-semibold mb-2 text-woodsmoke50">
                 Residential Roofing
               </h3>
-              <p className="text-sm text-brightGrey">
+              <p className="text-sm text-woodsmoke100">
                 Protecting homes with durable, high-quality roofing solutions
                 tailored for long-lasting safety and curb appeal.
               </p>
             </div>
-            <div className="bg-shadowBlack px-8 py-6 text-center w-full rounded-xl sm:rounded-r-xl sm:rounded-l-none">
-              <h3 className="text-lg font-semibold mb-2 text-lotionWhite">
+            <div className="bg-woodsmoke900 px-8 py-6 text-center w-full rounded-xl sm:rounded-r-xl sm:rounded-l-none">
+              <h3 className="text-lg font-semibold mb-2 text-woodsmoke50">
                 Commercial Roofing
               </h3>
-              <p className="text-sm text-brightGrey">
+              <p className="text-sm text-woodsmoke100">
                 Expert roofing services for businesses, ensuring energy
                 efficiency, weather resistance, and low maintenance costs.
               </p>
             </div>
           </div>
-          <div className="bg-black py-8 sm:py-16">
+          <div className="py-8 sm:py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <dl className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-12 text-center">
                 {stats.map((stat) => (
@@ -238,8 +233,8 @@ export default function About() {
                     key={stat.id}
                     className="mx-auto flex w-full max-w-sm flex-col gap-y-4"
                   >
-                    <dt className="text-base text-brightGrey">{stat.name}</dt>
-                    <dd className="order-first  text-3xl font-semibold tracking-wide text-bluePrimary sm:text-5xl">
+                    <dt className="text-base text-woodsmoke100">{stat.name}</dt>
+                    <dd className="order-first  text-3xl font-semibold tracking-wide text-woodsmoke400 sm:text-5xl">
                       {stat.value}
                     </dd>
                   </div>
@@ -249,10 +244,10 @@ export default function About() {
           </div>
         </section>
       </div>
-      <footer className="relative py-4 bg-black">
+      <footer className="relative py-4">
         <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">
           {/* Left Section: Copyright and License */}
-          <div className="text-xs sm:text-sm text-lotionWhite text-center sm:text-left">
+          <div className="text-xs sm:text-sm text-woodsmoke50 text-center sm:text-left">
             <span>© 2025 Francisco's Roofing, Inc. All rights reserved.</span>
             <br className="sm:hidden" />
             <span className="sm:ml-2">License No. #1086198</span>
@@ -260,15 +255,24 @@ export default function About() {
 
           {/* Right Section: Social Media Links */}
           <div className="flex space-x-4 mt-4 sm:mt-0">
-            <a href="#" className="text-lotionWhite hover:text-winterBlack">
+            <Link
+              href="#"
+              className="text-woodsmoke50 hover:text-woodsmoke200 active:text-woodsmoke300"
+            >
               <FaFacebook size={25} />
-            </a>
-            <a href="#" className="text-lotionWhite hover:text-winterBlack">
+            </Link>
+            <Link
+              href="#"
+              className="text-woodsmoke50 hover:text-woodsmoke200 active:text-woodsmoke300"
+            >
               <FaInstagram size={25} />
-            </a>
-            <a href="#" className="text-lotionWhite hover:text-winterBlack">
+            </Link>
+            <Link
+              href="#"
+              className="text-woodsmoke50 hover:text-woodsmoke200 active:text-woodsmoke300"
+            >
               <FaGoogle size={25} />
-            </a>
+            </Link>
           </div>
         </div>
       </footer>

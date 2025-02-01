@@ -86,8 +86,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="relative h-screen sm:overflow-hidden bg-lotionWhite">
-      <header className=" inset-x-0 top-0 z-50">
+    <div className="relative h-screen sm:overflow-hidden bg-woodsmoke50">
+      <header className="inset-x-0 top-0 z-50">
         <nav
           className="flex items-center justify-between p-4 sm:p-6 lg:px-8"
           aria-label="Global"
@@ -106,12 +106,12 @@ export default function Contact() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-woodsmoke950"
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon
                 aria-hidden="true"
-                className="h-6 w-6 text-winterBlack"
+                className="h-6 w-6 text-woodsmoke950"
               />
             </button>
           </div>
@@ -120,7 +120,7 @@ export default function Contact() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-base font-medium  text-winterBlack relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-winterBlack after:transition-all after:duration-300 hover:after:w-full"
+                className="text-base font-medium text-woodsmoke950 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-woodsmoke950 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
               </Link>
@@ -129,7 +129,7 @@ export default function Contact() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               href="/contact"
-              className="text-sm font-medium bg-winterBlack hover:bg-black hover:text-lotionWhite text-lotionWhite font-bold py-2 px-4 rounded"
+              className="text-sm font-medium bg-woodsmoke500 hover:bg-woodsmoke600 active:bg-woodsmoke700 hover:text-woodsmoke50 text-woodsmoke50 font-bold py-2 px-4 rounded"
             >
               Free Estimate <span aria-hidden="true">&rarr;</span>
             </Link>
@@ -142,25 +142,25 @@ export default function Contact() {
           className="lg:hidden"
         >
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-winterBlack px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-woodsmoke50 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-woodsmoke950">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Francisco's Roofing Inc</span>
                 <Image
                   alt="Logo White 160x160"
-                  src={LogoWhite}
+                  src={LogoBlack}
                   className="h-10 w-auto"
                 />
               </Link>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="-m-2.5 rounded-md p-2.5 text-winterBlack"
+                className="-m-2.5 rounded-md p-2.5 text-woodsmoke950"
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon
                   aria-hidden="true"
-                  className="h-6 w-6 text-lotionWhite"
+                  className="h-6 w-6 text-woodsmoke950"
                 />
               </button>
             </div>
@@ -168,19 +168,19 @@ export default function Contact() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-lotionWhite hover:bg-lotionWhite hover:text-winterBlack"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium  text-woodsmoke950 hover:bg-woodsmoke950 hover:text-woodsmoke50"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="py-6">
                   <Link
                     href="/contact"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-lotionWhite hover:bg-lotionWhite hover:text-winterBlack"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-medium  text-woodsmoke950 hover:bg-woodsmoke950 hover:text-woodsmoke50"
                   >
                     Free Estimate
                   </Link>
@@ -190,23 +190,23 @@ export default function Contact() {
           </DialogPanel>
         </Dialog>
       </header>
-      <div className="flex items-center bg-lotionWhite">
-        <div className="sm:max-w-7xl sm:mx-auto w-full grid grid-cols-1 md:grid-cols-2 sm:gap-8 bg-lotionWhite">
+      <div className="flex items-center bg-woodsmoke50">
+        <div className="sm:max-w-7xl sm:mx-auto w-full grid grid-cols-1 md:grid-cols-2 sm:gap-8 bg-woodsmoke50">
           {/* left side */}
           <div className="px-8 py-10">
-            <h3 className="text-shadowBlack uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
+            <h3 className="text-woodsmoke900 uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
               Get in touch
             </h3>
-            <h1 className="text-4xl font-semibold mb-4 uppercase text-winterBlack">
+            <h1 className="text-4xl font-semibold mb-4 uppercase text-woodsmoke950">
               contact us
             </h1>
-            <p className="text-base mb-8 text-shadowBlack">
+            <p className="text-base mb-8 text-woodsmoke900">
               Got roofing questions or need a quote? Contact us today! We’re
               here to assist you every step of the way and offer free,
               no-obligation estimates to get your project started with
               confidence.
             </p>
-            <div className="text-winterBlack">
+            <div className="text-woodsmoke900">
               <a href="tel:+13232535146" className="mb-4 block">
                 <p className="flex items-center gap-2">
                   <span className="font-medium">
@@ -228,10 +228,10 @@ export default function Contact() {
                 #1086198
               </p>
             </div>
-            <div className="mt-8 text-winterBlack">
+            <div className="mt-8 text-woodsmoke900">
               <h2 className="flex items-center gap-2 font-bold">
                 <LuClock size={25} />
-                <span className="text-2xl">Open Hours</span>
+                <span className="text-2xl text-woodsmoke950">Open Hours</span>
               </h2>
               <div className="mt-4 space-y-2 max-w-xs">
                 <p className="flex justify-between">
@@ -244,15 +244,21 @@ export default function Contact() {
                 </p>
               </div>
               <div className="mt-6 flex space-x-4">
-                <a href="#" className="text-winterBlack hover:text-black">
+                <a
+                  href="#"
+                  className="text-woodsmoke950 hover:text-woodsmoke700 active:text-woodsmoke600"
+                >
                   <FaFacebook size={25} />
                 </a>
-                <a href="#" className="text-winterBlack hover:text-black">
+                <a
+                  href="#"
+                  className="text-woodsmoke950 hover:text-woodsmoke700 active:text-woodsmoke600"
+                >
                   <FaInstagram size={25} />
                 </a>
                 <a
                   href="https://g.co/kgs/fzhRzAs"
-                  className="text-winterBlack hover:text-black"
+                  className="text-woodsmoke950 hover:text-woodsmoke700 active:text-woodsmoke600"
                 >
                   <FaGoogle size={25} />
                 </a>
@@ -260,12 +266,12 @@ export default function Contact() {
             </div>
           </div>
           {/* right side */}
-          <div className="px-8 mt-9 mb-20 ">
+          <div className="px-8 mb-20 ">
             <form onSubmit={handleSubmit} className="px-8 py-14">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
                   <label
-                    className="block text-sm font-semibold font-poppins text-winterBlack"
+                    className="block text-sm font-semibold font-poppins text-woodsmoke950"
                     htmlFor="firstName"
                   >
                     First Name
@@ -277,12 +283,12 @@ export default function Contact() {
                     placeholder="First Name"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                   />
                 </div>
                 <div>
                   <label
-                    className="block text-sm font-semibold font-poppins text-winterBlack"
+                    className="block text-sm font-semibold font-poppins text-woodsmoke950"
                     htmlFor="lastName"
                   >
                     Last Name
@@ -294,13 +300,13 @@ export default function Contact() {
                     placeholder="Last Name"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                   />
                 </div>
               </div>
               <div className="mt-4">
                 <label
-                  className="block text-sm font-semibold font-poppins text-winterBlack"
+                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
                   htmlFor="email"
                 >
                   Email
@@ -312,12 +318,29 @@ export default function Contact() {
                   placeholder="you@email.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                 />
               </div>
               <div className="mt-4">
                 <label
-                  className="block text-sm font-semibold font-poppins text-winterBlack"
+                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
+                />
+              </div>
+              <div className="mt-4">
+                <label
+                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
                   htmlFor="phone"
                 >
                   Phone number
@@ -329,12 +352,12 @@ export default function Contact() {
                   placeholder="(555) 000-0000"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                 />
               </div>
               <div className="mt-4">
                 <label
-                  className="block text-sm font-semibold font-poppins text-winterBlack"
+                  className="block text-sm font-semibold font-poppins text-woodsmoke950"
                   htmlFor="message"
                 >
                   Message
@@ -346,13 +369,13 @@ export default function Contact() {
                   placeholder="Leave us a message..."
                   value={formData.message}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-brightGrey rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-winterBlack"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 text-woodsmoke950 placeholder-woodsmoke300"
                 ></textarea>
               </div>
               <div className="mt-8 flex justify-end flex-col text-center">
                 <button
                   type="submit"
-                  className="bg-winterBlack text-lotionWhite py-2 px-4 rounded-lg hover:bg-black transition"
+                  className="bg-woodsmoke950 text-woodsmoke50 py-2 px-4 rounded-lg hover:bg-woodsmoke900 active:bg-woodsmoke800 transition"
                   disabled={status === "loading"}
                 >
                   {status === "loading" ? "Sending..." : "Send Message"}
