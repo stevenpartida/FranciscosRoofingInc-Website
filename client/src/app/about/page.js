@@ -1,5 +1,6 @@
 "use client";
 
+import Reviews from "../components/reviews";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -243,6 +244,7 @@ export default function About() {
             </div>
           </div>
         </section>
+        <Reviews />
       </div>
       <footer className="relative py-4">
         <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
@@ -31,7 +32,12 @@ export default function Home() {
       </video>
       <div className="absolute inset-0 bg-woodsmoke950/70"></div>
 
-      <header className="absolute inset-x-0 top-0 z-50">
+      <motion.header
+        initial={{ opacity: 0, y: -100 }} // Start off-screen (above)
+        animate={{ opacity: 1, y: 0 }} // Move to normal position
+        transition={{ duration: 1.2, ease: "easeOut" }} // Smooth transition
+        className="absolute inset-x-0 top-0 z-50"
+      >
         <nav
           className="flex items-center justify-between p-4 sm:p-6 lg:px-8"
           aria-label="Global"
@@ -133,12 +139,17 @@ export default function Home() {
             </div>
           </DialogPanel>
         </Dialog>
-      </header>
+      </motion.header>
 
       <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl sm:max-w-2xl py-16 sm:py-32 lg:py-48">
           <div className=" mb-4 sm:mb-8 flex justify-center">
-            <div className="relative rounded-full px-2 py-0.5 sm:px-3 sm:py-1 font-medium sm:font-medium drop-shadow-md sm:drop-shadow-2xl text-xs sm:text-sm text-woodsmoke50 ring-1 ring-woodsmoke400 hover:ring-woodsmoke500 active:ring-woodsmoke600 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, x: -100 }} // Starts off-screen to the left
+              animate={{ opacity: 1, x: 0 }} // Moves to normal position
+              transition={{ duration: 1, ease: "easeOut", delay: 0.8 }} // Delayed animation
+              className="relative rounded-full px-2 py-0.5 sm:px-3 sm:py-1 font-medium sm:font-medium drop-shadow-md sm:drop-shadow-2xl text-xs sm:text-sm text-woodsmoke50 ring-1 ring-woodsmoke400 hover:ring-woodsmoke500 active:ring-woodsmoke600 backdrop-blur-md"
+            >
               See our recent work.{" "}
               <Link
                 href="#"
@@ -150,20 +161,31 @@ export default function Home() {
                 </span>{" "}
                 <span aria-hidden="true">&rarr;</span>
               </Link>
-            </div>
+            </motion.div>
           </div>
           <div className="text-center">
-            <h1 className="text-4xl uppercase font-bold text-woodsmoke50 sm:text-6xl">
-              Francisco's Roofing, Inc
-            </h1>
-            <p className="mt-6 text-poppins text-base sm:text-lg text-woodsmoke100 drop-shadow-2xl">
-              At Francisco's Roofing, Inc, we provide top-quality roofing
-              services with years of expertise. As a Licensed and Insured
-              company, we deliver reliable results with exceptional
-              craftsmanship. Whether it's repairs, replacements, or
-              installations, we’re here to protect your property.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }} // Starts faded out and slightly smaller
+              animate={{ opacity: 1, scale: 1 }} // Fades in and scales up to normal size
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <h1 className="text-4xl uppercase font-bold text-woodsmoke50 sm:text-6xl">
+                Francisco's Roofing, Inc
+              </h1>
+              <p className="mt-6 text-poppins text-base sm:text-lg text-woodsmoke100 drop-shadow-2xl">
+                At Francisco's Roofing, Inc, we provide top-quality roofing
+                services with years of expertise. As a Licensed and Insured
+                company, we deliver reliable results with exceptional
+                craftsmanship. Whether it's repairs, replacements, or
+                installations, we’re here to protect your property.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 100 }} // Starts off-screen below
+              animate={{ opacity: 1, y: 0 }} // Moves to normal position
+              transition={{ duration: 0.8, ease: "easeOut", delay: 1.6 }} // Delayed animation
+              className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
               <a
                 href="#"
                 className="w-full sm:w-auto rounded-md bg-woodsmoke500 px-6 py-3 text-sm font-semibold text-woodsmoke50 shadow-sm hover:bg-woodsmoke600 active:bg-woodsmoke700"
@@ -176,12 +198,17 @@ export default function Home() {
               >
                 Learn more <span aria-hidden="true">→</span>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
-      <footer className="absolute inset-x-0 bottom-0 z-50 py-4">
+      <motion.footer
+        initial={{ opacity: 0, y: 100 }} // Starts off-screen below
+        animate={{ opacity: 1, y: 0 }} // Moves to normal position
+        transition={{ duration: 0.8, ease: "easeOut" }} // Delayed animation
+        className="absolute inset-x-0 bottom-0 z-50 py-4"
+      >
         <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">
           {/* Left Section: Copyright and License */}
           <div className="text-xs sm:text-sm text-woodsmoke50 text-center sm:text-left">
@@ -212,7 +239,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }

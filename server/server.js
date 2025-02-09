@@ -2,13 +2,30 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const { Pool } = require("pg");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./server/.env" });
+
 const app = express();
 const PORT = 5001;
 
-const dotenv = require("dotenv");
-dotenv.config({ path: "./server/.env" });
 const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS;
+const dbUrl = process.env.DB_URL;
+
+// Postgres Database Connection
+const pool = new Pool({
+  connectionString: dbUrl,
+});
+
+//Test Database Connection;
+pool.query("SELECT NOW()", (err, res) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Connected to Database:", res.rows[0].now);
+  }
+});
 
 //Middleware
 app.use(bodyParser.json());
