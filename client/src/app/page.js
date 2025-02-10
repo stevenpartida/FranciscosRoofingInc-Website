@@ -11,7 +11,7 @@ import LogoWhite from "./assets/images/LogoWhite.png";
 
 const navigation = [
   { name: "About", href: "/about" },
-  { name: "Services", href: "#" },
+  { name: "Services", href: "/services" },
   { name: "Projects", href: "#" },
   { name: "Contact", href: "/contact" },
 ];

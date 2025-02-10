@@ -16,7 +16,7 @@ import axios from "axios";
 
 const navigation = [
   { name: "About", href: "/about" },
-  { name: "Services", href: "#" },
+  { name: "Services", href: "/services" },
   { name: "Projects", href: "#" },
   { name: "Contact", href: "/contact" },
 ];
@@ -296,7 +296,7 @@ export default function Contact() {
                     placeholder="Full Name"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
+                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                   />
                 </div>
                 <div className="w-full">
@@ -310,7 +310,7 @@ export default function Contact() {
                     placeholder="Address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
+                    className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                   />
                 </div>
               </div>
@@ -325,11 +325,11 @@ export default function Contact() {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                 />
               </div>
               <div className="mt-4 w-full">
-                <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
+                <label className="block w-full text-sm font-semibold text-woodsmoke950">
                   Phone Number
                 </label>
                 <input
@@ -339,9 +339,48 @@ export default function Contact() {
                   placeholder="(555) 000-0000"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                 />
               </div>
+              <div className="mt-4 w-full">
+                <label className="block w-full text-sm font-semibold text-woodsmoke950">
+                  Service Type
+                </label>
+                <Menu
+                  as="div"
+                  className="mt-3 relative inline-block text-left w-full"
+                >
+                  <div>
+                    <MenuButton className="inline-flex w-full justify-between rounded-md bg-white px-4 py-3 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">
+                      {formData.serviceType}
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="-mr-1 size-5 text-gray-400"
+                      />
+                    </MenuButton>
+                  </div>
+
+                  <MenuItems
+                    transition
+                    className="absolute right-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden"
+                  >
+                    <div className="py-1">
+                      {serviceOptions.map((service) => (
+                        <MenuItem key={service} as="div">
+                          <button
+                            type="button"
+                            onClick={() => handleServiceSelect(service)}
+                            className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          >
+                            {service}
+                          </button>
+                        </MenuItem>
+                      ))}
+                    </div>
+                  </MenuItems>
+                </Menu>
+              </div>
+
               <div className="mt-4 w-full">
                 <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                   Message
@@ -353,7 +392,7 @@ export default function Contact() {
                   placeholder="Leave us a message..."
                   value={formData.message}
                   onChange={handleChange}
-                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 rounded-md"
+                  className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                 ></textarea>
               </div>
               <div className="mt-8 flex justify-end flex-col text-center">

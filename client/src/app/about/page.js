@@ -16,7 +16,7 @@ import axios from "axios";
 
 const navigation = [
   { name: "About", href: "/about" },
-  { name: "Services", href: "#" },
+  { name: "Services", href: "/services" },
   { name: "Projects", href: "#" },
   { name: "Contact", href: "/contact" },
 ];
