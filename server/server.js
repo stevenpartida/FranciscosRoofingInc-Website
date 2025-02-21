@@ -33,7 +33,9 @@ app.use(cors());
 
 // NodeMailer transporter setup
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: true,
   auth: {
     user: emailUser,
     pass: emailPass,
@@ -58,6 +60,9 @@ app.post("/api/contact", (req, res) => {
             Service Type: ${serviceType}
             Message: ${message}
         `,
+    headers: {
+      "X-ReplyTo": "Francisco - Info",
+    },
   };
 
   // Send the email

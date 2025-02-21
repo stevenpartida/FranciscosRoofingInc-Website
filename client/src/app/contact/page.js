@@ -228,12 +228,15 @@ export default function Contact() {
                   +1 (323) 253-5146
                 </p>
               </a>
-              <a href="mailto:example@email.com" className="mb-8 block">
+              <a
+                href="mailto:support@franciscosroofinginc.co"
+                className="mb-8 block"
+              >
                 <p className="flex items-center gap-2">
                   <span className="font-medium">
                     <LuMail size={20} />
                   </span>
-                  franciscosroofinginc.22@gmail.com
+                  support@franciscosroofinginc.co
                 </p>
               </a>
               <p className="flex items-center gap-2">
