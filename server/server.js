@@ -48,7 +48,7 @@ app.post("/api/contact", (req, res) => {
   const mailOptions = {
     from: emailUser, // Sender's email (from the form)
     to: emailUser, // Replace with your recipient email address
-    subject: `New Inquiry: ${fullName} - Contact Form Submission`,
+    subject: `New Form Submission: ${fullName} - ${serviceType}`,
     text: `
             You have a new contact form submission:
             Name: ${fullName}

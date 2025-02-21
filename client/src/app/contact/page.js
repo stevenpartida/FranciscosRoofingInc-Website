@@ -24,6 +24,7 @@ const navigation = [
 export default function Contact() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -55,7 +56,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //Validation
+    // Validation: Check if any field is empty
     if (
       !formData.fullName ||
       !formData.address ||
@@ -65,25 +66,19 @@ export default function Contact() {
       !formData.message
     ) {
       setErrorMessage("All fields are required.");
-      setStatus("error");
       return;
     }
 
-    if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      setErrorMessage("Invalid email address.");
-      setStatus("error");
-      return;
-    }
-
-    setStatus("loading");
+    // Clear error message if all fields are filled
     setErrorMessage("");
+    setLoading(true); // Start loading state
 
     try {
       const response = await axios.post(
         "http://localhost:5001/api/contact",
         formData
       );
-      setStatus("success");
+
       setFormData({
         fullName: "",
         address: "",
@@ -91,14 +86,16 @@ export default function Contact() {
         phone: "",
         serviceType: "Select Service",
         message: "",
-      }); //Reset form
+      }); // Reset form
 
-      setTimeout(() => setStatus(null), 100000);
+      setStatus("success");
+      setTimeout(() => setStatus(null), 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
-      setErrorMessage("An unexpected error occurred. Please try again later.");
-      setStatus("error");
+      setErrorMessage("An unexpected error occurred. Please try again.");
     }
+
+    setLoading(false); // Stop loading state
   };
 
   return (
@@ -398,10 +395,19 @@ export default function Contact() {
               <div className="mt-8 flex justify-end flex-col text-center">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto bg-woodsmoke950 text-woodsmoke50 py-2 px-4 rounded-lg"
+                  className={`w-full sm:w-auto bg-woodsmoke950 text-woodsmoke50 py-2 px-4 rounded-lg ${
+                    loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  disabled={loading}
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
+
+                {errorMessage && (
+                  <p className="mt-3 text-red-600 text-sm font-semibold">
+                    {errorMessage}
+                  </p>
+                )}
               </div>
             </form>
           </div>
