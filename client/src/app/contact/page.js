@@ -8,10 +8,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import LogoBlack from "../assets/images/LogoBlack.png";
-import LogoWhite from "../assets/images/LogoWhite.png";
 import { LuPhone, LuMail } from "react-icons/lu";
 import { LuClock } from "react-icons/lu";
 import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
+import { delay, motion } from "framer-motion";
 import axios from "axios";
 
 const navigation = [
@@ -25,6 +25,14 @@ export default function Contact() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const formRowVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -206,7 +214,12 @@ export default function Contact() {
       <div className="flex items-center bg-woodsmoke50">
         <div className="sm:max-w-7xl sm:mx-auto w-full grid grid-cols-1 md:grid-cols-2 sm:gap-8 bg-woodsmoke50">
           {/* left side */}
-          <div className="px-8 py-10">
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="px-8 py-10"
+          >
             <h3 className="text-woodsmoke900 uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
               Get in touch
             </h3>
@@ -214,10 +227,9 @@ export default function Contact() {
               contact us
             </h1>
             <p className="text-base mb-8 text-woodsmoke900">
-              Got roofing questions or need a quote? Contact us today! We’re
-              here to assist you every step of the way and offer free,
-              no-obligation estimates to get your project started with
-              confidence.
+              Have roofing questions or need assistance? Contact us today! We’re
+              here to help at every step and offer free, no-obligation estimates
+              to ensure your project starts with confidence.
             </p>
             <div className="text-woodsmoke900">
               <a href="tel:+13232535146" className="mb-4 block">
@@ -280,12 +292,18 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
           {/* right side */}
           <div className="w-full max-w-lg mx-auto">
             <form onSubmit={handleSubmit} className="px-4 sm:px-8 py-14 w-full">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-5">
-                <div className="w-full">
+                <motion.div
+                  variants={formRowVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  className="w-full"
+                >
                   <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                     Full Name
                   </label>
@@ -298,8 +316,14 @@ export default function Contact() {
                     onChange={handleChange}
                     className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                   />
-                </div>
-                <div className="w-full">
+                </motion.div>
+                <motion.div
+                  variants={formRowVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  className="w-full"
+                >
                   <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                     Address
                   </label>
@@ -312,9 +336,15 @@ export default function Contact() {
                     onChange={handleChange}
                     className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                   />
-                </div>
+                </motion.div>
               </div>
-              <div className="mt-4 w-full">
+              <motion.div
+                variants={formRowVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="mt-4 w-full"
+              >
                 <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                   Email
                 </label>
@@ -327,8 +357,14 @@ export default function Contact() {
                   onChange={handleChange}
                   className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                 />
-              </div>
-              <div className="mt-4 w-full">
+              </motion.div>
+              <motion.div
+                variants={formRowVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="mt-4 w-full"
+              >
                 <label className="block w-full text-sm font-semibold text-woodsmoke950">
                   Phone Number
                 </label>
@@ -341,8 +377,14 @@ export default function Contact() {
                   onChange={handleChange}
                   className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                 />
-              </div>
-              <div className="mt-4 w-full">
+              </motion.div>
+              <motion.div
+                variants={formRowVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="mt-4 w-full"
+              >
                 <label className="block w-full text-sm font-semibold text-woodsmoke950">
                   Service Type
                 </label>
@@ -379,9 +421,15 @@ export default function Contact() {
                     </div>
                   </MenuItems>
                 </Menu>
-              </div>
+              </motion.div>
 
-              <div className="mt-4 w-full">
+              <motion.div
+                variants={formRowVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="mt-4 w-full"
+              >
                 <label className="block w-full text-sm font-semibold font-poppins text-woodsmoke950">
                   Message
                 </label>
@@ -394,8 +442,14 @@ export default function Contact() {
                   onChange={handleChange}
                   className="mt-3 px-4 py-2 block w-full border border-woodsmoke300 text-woodsmoke950 rounded-md"
                 ></textarea>
-              </div>
-              <div className="mt-8 flex justify-end flex-col text-center">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 100 }} // Start completely hidden and below
+                whileInView={{ opacity: 1, y: 0 }} // Animate into view
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }} // Smooth transition with delay
+                viewport={{ once: true, amount: 0.2 }} // Ensures it only animates when at least 20% is visible
+                className="mt-8 flex justify-end flex-col text-center"
+              >
                 <button
                   type="submit"
                   className={`w-full sm:w-auto bg-woodsmoke950 text-woodsmoke50 py-2 px-4 rounded-lg ${
@@ -411,16 +465,11 @@ export default function Contact() {
                     {errorMessage}
                   </p>
                 )}
-              </div>
+              </motion.div>
             </form>
           </div>
         </div>
       </div>
-      <footer className="flex items-center justify-center py-4 sm:mt-16">
-        <span className="text-xs sm:text-sm text-woodsmoke950 text-center ">
-          © 2025 Francisco's Roofing, Inc. All rights reserved.
-        </span>
-      </footer>
     </div>
   );
 }

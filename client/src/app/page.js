@@ -206,7 +206,7 @@ export default function Home() {
       <motion.footer
         initial={{ opacity: 0, y: 100 }} // Starts off-screen below
         animate={{ opacity: 1, y: 0 }} // Moves to normal position
-        transition={{ duration: 0.8, ease: "easeOut" }} // Delayed animation
+        transition={{ duration: 1, ease: "easeOut", delay: 2 }} // Delayed animation
         className="absolute inset-x-0 bottom-0 z-50 py-4"
       >
         <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">
