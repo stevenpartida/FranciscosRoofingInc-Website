@@ -10,6 +10,8 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import LogoBlack from "../assets/images/LogoBlack.png";
 import { LuPhone, LuMail } from "react-icons/lu";
 import { LuClock } from "react-icons/lu";
+import { VscTools } from "react-icons/vsc";
+
 import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
 import { delay, motion } from "framer-motion";
 import axios from "axios";
@@ -241,12 +243,23 @@ export default function Contact() {
                 </p>
               </a>
               <a
+                href="mailto:info@franciscosroofinginc.co"
+                className="mb-4 block"
+              >
+                <p className="flex items-center gap-2">
+                  <span className="font-medium">
+                    <LuMail size={20} />
+                  </span>
+                  info@franciscosroofinginc.co
+                </p>
+              </a>
+              <a
                 href="mailto:support@franciscosroofinginc.co"
                 className="mb-8 block"
               >
                 <p className="flex items-center gap-2">
                   <span className="font-medium">
-                    <LuMail size={20} />
+                    <VscTools size={20} />
                   </span>
                   support@franciscosroofinginc.co
                 </p>

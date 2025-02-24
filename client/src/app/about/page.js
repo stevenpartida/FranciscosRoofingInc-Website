@@ -1,18 +1,13 @@
 "use client";
 
-import Reviews from "../components/reviews";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import LogoBlack from "../assets/images/LogoBlack.png";
 import LogoWhite from "../assets/images/LogoWhite.png";
 import StockPhoto from "../assets/images/StockPhoto.jpg";
-import { LuPhone, LuMail } from "react-icons/lu";
-import { LuClock } from "react-icons/lu";
 import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
-import axios from "axios";
 
 const navigation = [
   { name: "About", href: "/about" },
@@ -31,8 +26,8 @@ const stats = [
 export default function About() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <div className="flex flex-col min-h-screen bg-woodsmoke950 sm:overflow-hidden">
-      <header className="inset-x-0 top-0 z-50">
+    <div className="flex flex-col min-h-screen bg-woodsmoke950 ">
+      <header className="inset-x-0 top-0 z-50 bg-woodsmoke950">
         <nav
           className="flex items-center justify-between p-4 sm:p-6 lg:px-8"
           aria-label="Global"
@@ -135,98 +130,112 @@ export default function About() {
           </DialogPanel>
         </Dialog>
       </header>
-      <div className="relative px-4 pt-2 mb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-xl sm:max-w-2xl lg:max-w-5xl py-0 sm:pt-16 sm:pb-32 flex flex-col sm:flex-row items-center ">
-          {/* Image Container */}
-          <div className="flex-1 p-4 rounded-lg shadow-sm items-center">
-            <Image
-              alt="Stock Photo"
-              src={StockPhoto}
-              className="w-full h-auto object-cover"
-            />
-          </div>
+      <div className="relative">
+        <div className="relative z-[1] bg-woodsmoke950 flex items-center justify-center py-8 sm:py-16">
+          <div className="max-w-5xl flex flex-col sm:flex-row items-center">
+            {/* Image Container */}
+            <div className="flex-1 p-4 rounded-lg shadow-sm items-center">
+              <Image
+                alt="Stock Photo"
+                src={StockPhoto}
+                className="w-full h-auto object-cover"
+              />
+            </div>
 
-          {/* Text Content */}
-          <div className="flex-1 p-6 min-w-0 ">
-            <h3 className="text-woodsmoke100 uppercase mb-2 text-base sm:text-lg tracking-widest font-light">
-              About Francisco's Roofing, Inc
-            </h3>
-            <h1 className="text-woodsmoke50 capitalize font-extrabold text-2xl sm:text-4xl leading-snug text-balance">
-              Who Are We
-            </h1>
-            <p className="text-woodsmoke100 mt-2">
-              Francisco’s Roofing, Inc. is a{" "}
-              <span className="font-semibold">family and veteran-owned</span>{" "}
-              roofing company, proudly serving the{" "}
-              <span className="font-semibold">Los Angeles area</span>. We
-              specialize in{" "}
-              <span className="font-semibold">
-                residential and commercial roofing services
-              </span>
-              , delivering durable, high-quality craftsmanship.
-              <br />
-              <br />
-              Founded in <span className="font-semibold">2022</span> by
-              Francisco Senior and Francisco Jr., we bring{" "}
-              <span className="font-semibold">35+ years of experience</span> in
-              the roofing industry. Our mission is to provide long-lasting
-              roofing solutions that protect homes and businesses.
-              <br />
-              <br />
-              As a{" "}
-              <span className="font-semibold">
-                fully licensed and insured
-              </span>{" "}
-              company, we are committed to safety, quality, and customer
-              satisfaction. At Francisco’s Roofing, Inc., your trust is our
-              foundation, and your roof is our priority.{" "}
-              <span className="font-semibold">
-                Contact us today for your free roofing estimate!
-              </span>
-            </p>
-            <div className="flex justify-center sm:justify-end mt-8 sm:mt-6">
-              <Link
-                href="/contact"
-                className="text-sm font-medium bg-woodsmoke500 hover:bg-woodsmoke600 active:bg-woodsmoke700 text-woodsmoke50 font-bold py-2 px-4 rounded"
-              >
-                Get in Touch <span aria-hidden="true">&rarr;</span>
-              </Link>
+            {/* Text Content */}
+            <div className="flex-1 min-w-0 h-full flex flex-col justify-center p-4">
+              <h3 className="text-woodsmoke100 uppercase mb-2 text-lg sm:text-xl tracking-widest font-light">
+                About Francisco's Roofing, Inc
+              </h3>
+              <h1 className="text-woodsmoke50 font-extrabold text-2xl sm:text-4xl leading-snug text-balance uppercase">
+                Who Are We
+              </h1>
+              <p className="text-base md:text-lg leading-relaxed text-woodsmoke100 mt-2">
+                Francisco’s Roofing, Inc. is a{" "}
+                <span className="font-semibold">family and veteran-owned</span>{" "}
+                roofing company, proudly serving the{" "}
+                <span className="font-semibold">Los Angeles area</span>. We
+                specialize in{" "}
+                <span className="font-semibold">
+                  residential and commercial roofing services
+                </span>
+                , delivering durable, high-quality craftsmanship.
+                <br />
+                <br />
+                Founded in <span className="font-semibold">2022</span> by
+                Francisco Senior and Francisco Jr., we bring{" "}
+                <span className="font-semibold">35+ years of experience</span>{" "}
+                in the roofing industry. Our mission is to provide long-lasting
+                roofing solutions that protect homes and businesses.
+                <br />
+                <br />
+                As a{" "}
+                <span className="font-semibold">
+                  fully licensed and insured
+                </span>{" "}
+                company, we are committed to safety, quality, and customer
+                satisfaction. At Francisco’s Roofing, Inc., your trust is our
+                foundation, and your roof is our priority.{" "}
+                <span className="font-semibold">
+                  Contact us today for your free roofing estimate!
+                </span>
+              </p>
+              <div className="flex justify-center sm:justify-end mt-8 sm:mt-10">
+                <Link
+                  href="/contact"
+                  className="text-sm font-medium bg-woodsmoke500 hover:bg-woodsmoke600 active:bg-woodsmoke700 text-woodsmoke50 font-bold py-2 px-4 rounded"
+                >
+                  Get in Touch <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-        <section className="py-12 px-2 sm:px-6 mt-2">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-balance text-woodsmoke50">
-              Trusted by Homeowners & Businesses for Quality Roofing
+        <section className="relative flex flex-col justify-center text-center text-woodsmoke50 py-12 sm:py-16">
+          <div
+            className="fixed top-0 left-0 w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${StockPhoto.src})` }}
+          ></div>
+          {/* Dark Tint Overlay */}
+          <div className="absolute inset-0 bg-woodsmoke950/60"></div>
+
+          {/* Content Inside the Section */}
+          <div className="relative max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight leading-none text-balance mb-6">
+              Reliable Roofing Solutions for Homes & Businesses
             </h2>
-            <p className="text-woodsmoke100 mt-2">
-              From residential homes to large-scale commercial, we provide
+            <p className="text-base lg:text-lg text-balance font-medium text-woodsmoke100 leading-relaxed">
+              From residential homes to large-scale commercial, we deliver
               durable, high-quality roofing solutions tailored to your needs.
-              With expert craftsmanship and premium materials, we ensure lasting
+              Our expert craftsmanship and premium materials provide lasting
               protection and peace of mind.
             </p>
           </div>
-          <div className="mt-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-1">
-            <div className="bg-woodsmoke900 px-8 py-6 text-center w-full rounded-xl sm:rounded-l-xl sm:rounded-r-none">
-              <h3 className="text-lg font-semibold mb-2 text-woodsmoke50">
+
+          {/* Roofing Services */}
+          <div className="relative sm:max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 my-16 px-4 text-woodsmoke50">
+            <div className="bg-woodsmoke900/90 px-8 py-6 text-center w-full rounded-xl sm:rounded-l-xl sm:rounded-r-none">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-woodsmoke50">
                 Residential Roofing
               </h3>
-              <p className="text-sm text-woodsmoke100">
+              <p className="text-sm sm:text-base leading-relaxed text-woodsmoke50">
                 Protecting homes with durable, high-quality roofing solutions
                 tailored for long-lasting safety and curb appeal.
               </p>
             </div>
-            <div className="bg-woodsmoke900 px-8 py-6 text-center w-full rounded-xl sm:rounded-r-xl sm:rounded-l-none">
-              <h3 className="text-lg font-semibold mb-2 text-woodsmoke50">
+            <div className="bg-woodsmoke900/90 px-8 py-6 text-center w-full rounded-xl sm:rounded-r-xl sm:rounded-l-none">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-woodsmoke50">
                 Commercial Roofing
               </h3>
-              <p className="text-sm text-woodsmoke100">
+              <p className="text-sm sm:text-base leading-relaxed text-woodsmoke50">
                 Expert roofing services for businesses, ensuring energy
                 efficiency, weather resistance, and low maintenance costs.
               </p>
             </div>
           </div>
-          <div className="py-8 sm:py-16">
+
+          {/* Statistics */}
+          <div className="relative py-8 sm:py-16 text-woodsmoke50">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <dl className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-12 text-center">
                 {stats.map((stat) => (
@@ -234,8 +243,10 @@ export default function About() {
                     key={stat.id}
                     className="mx-auto flex w-full max-w-sm flex-col gap-y-4"
                   >
-                    <dt className="text-base text-woodsmoke100">{stat.name}</dt>
-                    <dd className="order-first  text-3xl font-semibold tracking-wide text-woodsmoke400 sm:text-5xl">
+                    <dt className="text-base sm:text-lg text-woodsmoke50">
+                      {stat.name}
+                    </dt>
+                    <dd className="order-first text-3xl font-semibold tracking-wide text-woodsmoke400 sm:text-5xl">
                       {stat.value}
                     </dd>
                   </div>
@@ -244,9 +255,16 @@ export default function About() {
             </div>
           </div>
         </section>
-        <Reviews />
+        {/* Logo Cloud */}
+        <section className="relative bg-woodsmoke950 py-12 sm:py-16 flex justify-center items-center">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="text-base sm:text-3xl font-bold tracking-tight leading-none text-balance mb-6 text-center">
+              Expert Roofing Backed by Trusted Brands
+            </h2>
+          </div>
+        </section>
       </div>
-      <footer className="relative py-4">
+      <footer className="relative py-4 bg-woodsmoke950 text-woodsmoke50">
         <div className="flex flex-col sm:flex-row sm:justify-between items-center px-4">
           {/* Left Section: Copyright and License */}
           <div className="text-xs sm:text-sm text-woodsmoke50 text-center sm:text-left">
