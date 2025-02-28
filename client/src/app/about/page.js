@@ -8,7 +8,12 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LogoWhite from "../assets/images/LogoWhite.png";
 import StockPhoto from "../assets/images/StockPhoto.jpg";
 import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
-
+import certainTeed from "../assets/images/certainTeed.png";
+import eagleRoofing from "../assets/images/eagleRoofing.png";
+import GAF from "../assets/images/GAF.png";
+import malarkey from "../assets/images/malarkey.png";
+import owensCorning from "../assets/images/owensCorning.png";
+import ReviewsCarousel from "../components/ReviewsCarousel";
 const navigation = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
@@ -256,11 +261,46 @@ export default function About() {
           </div>
         </section>
         {/* Logo Cloud */}
-        <section className="relative bg-woodsmoke950 py-12 sm:py-16 flex justify-center items-center">
-          <div className="mx-auto max-w-7xl">
-            <h2 className="text-base sm:text-3xl font-bold tracking-tight leading-none text-balance mb-6 text-center">
+        <section className="relative bg-woodsmoke50 py-12 sm:py-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <h2 className="text-center text-xl font-semibold text-balance text-woodsmoke950">
               Expert Roofing Backed by Trusted Brands
             </h2>
+            <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+              <Image
+                alt="Eagle Roofing Products logo"
+                src={eagleRoofing}
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+              ></Image>
+              <Image
+                alt="CertainTeed Roofing Products logo"
+                src={certainTeed}
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+              ></Image>
+              <Image
+                alt="GAF Roofing logo"
+                src={GAF}
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+              ></Image>
+              <Image
+                alt="Owens Corning Roofing logo"
+                src={owensCorning}
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+              ></Image>
+              <Image
+                alt="Malarkey Roofing Products logo"
+                src={malarkey}
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+              ></Image>
+            </div>
+          </div>
+        </section>
+        <section className="relative bg-woodsmoke950 py-16 sm:py-32 overflow-hidden">
+          <div className="px-2 sm:px-16">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight leading-none text-balance text-center mb-16">
+              Trusted by Homeowners & Businesses
+            </h2>
+            <ReviewsCarousel />
           </div>
         </section>
       </div>

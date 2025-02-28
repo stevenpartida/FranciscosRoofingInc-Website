@@ -459,9 +459,9 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, y: 100 }} // Start completely hidden and below
                 whileInView={{ opacity: 1, y: 0 }} // Animate into view
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }} // Smooth transition with delay
-                viewport={{ once: true, amount: 0.2 }} // Ensures it only animates when at least 20% is visible
-                className="mt-8 flex justify-end flex-col text-center"
+                transition={{ duration: 1.4, ease: "easeOut" }} // Smooth transition with delay
+                viewport={{ once: true, amount: 0.1 }} // Ensures it only animates when at least 20% is visible
+                className="mt-8 flex justify-end flex-col text-center "
               >
                 <button
                   type="submit"
